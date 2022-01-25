@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- First button is the initial Fab of the menu -->
+    <!-- Title here can be empty if you don't to add any action in the main button -->
+    <item
+        android:id="@+id/main_option"
+        android:icon="@drawable/hamburger"
+        android:title=""/>
+
+    <!-- Options buttons of the Fab menu -->
+    <item
+        android:id="@+id/optHoy"
+        android:icon="@drawable/scheduled"
+        android:title="Hoy" />
+
+    <item
+        android:id="@+id/optAbierto"
+        android:icon="@drawable/sync"
+        android:title="Abiertos" />
+
+    <item
+        android:id="@+id/optCerrado"
+        android:icon="@drawable/done"
+        android:title="Cerrados" />
+
+    <item
+        android:id="@+id/optCancelados"
+        android:icon="@drawable/close"
+        android:title="Cancelados" />
+
+</menu>

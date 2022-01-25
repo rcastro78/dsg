@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llBackgroud"
+    android:layout_height="108dp"
+    android:weightSum="2"
+    android:orientation="vertical"
+    android:layout_margin="6dp"
+    android:background="#F0F0F0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="100">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="85">
+
+        <sv.com.seguridadcontrol.app.utilities.CircularTextView
+            android:id="@+id/txtOrderNum2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="1"
+            android:textColor="#fff"></sv.com.seguridadcontrol.app.utilities.CircularTextView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="15"
+       >
+
+        <TextView
+            android:id="@+id/txtCodigoOrden"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"
+            android:text="Código de la orden"></TextView>
+
+    </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="4dp">
+
+            <ImageButton
+                android:id="@+id/btnMaterials"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:background="@drawable/materiales"></ImageButton>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="4dp">
+
+            <Button
+                android:id="@+id/btnOrderDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_centerInParent="true"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:backgroundTint="#303030"
+                android:text="Detalle"></Button>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

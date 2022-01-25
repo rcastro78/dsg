@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sv.com.seguridadcontrol.app">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DSG2">
+        <activity
+            android:name=".erp.tecnicos.OrdenUbicacionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.TipoInstalacionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.Orders2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.OrdenFirmaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.OrdenTrabajoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.OrdenDetalleArticuloActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.OrdenMaterialesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".erp.tecnicos.ProvArticulosActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.tecnicos.ProvMaterialesActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.tecnicos.OrdersActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.tecnicos.HojaCtrlActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.tecnicos.ERPPrincipalActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".erp.tecnicos.TicketsHoyActivity" />
+        <activity android:name=".MenuPrincipalActivity" />
+    </application>
+
+</manifest>

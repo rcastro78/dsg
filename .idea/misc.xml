@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_hoja_ctrl.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_orden_detalle_articulo.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_orden_firma.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_orden_materiales.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_orden_trabajo.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/activity_orden_ubicacion.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_orders.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_orders2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_principal.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_prov_articulos.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_prov_materiales.xml" value="0.34649122807017546" />
+        <entry key="app/src/main/res/layout/activity_tickets.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_tipo_instalacion.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/circular_background.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/layout/dialog_comment.xml" value="0.13984375" />
+        <entry key="app/src/main/res/layout/item_detail_order_article.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/layout/item_orden_materiales.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/item_order_2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_prov_articulos.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_prov_material.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_spinner.xml" value="0.141796875" />
+        <entry key="app/src/main/res/layout/item_ticket.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/tool_bar.xml" value="0.16458333333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

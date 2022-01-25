@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".erp.tecnicos.TipoInstalacionActivity">
+
+    <include android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"></include>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/llTipo"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:weightSum="100"
+        android:padding="12dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblTipoInstal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Tipo"
+                android:textColor="#000"></TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:id="@+id/rgTipo"
+                >
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbVH"
+                    android:text="VH"
+                    android:layout_weight="1"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbFG"
+                    android:text="FG"
+                    android:layout_weight="1"></RadioButton>
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/llInstal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:weightSum="100"
+        android:padding="12dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblInstal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Instalación"
+                android:textColor="#000"></TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:id="@+id/rgInstall"
+                >
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbT1"
+                    android:text="T1"
+                    android:layout_weight="1"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbT2"
+                    android:text="T2"
+                    android:layout_weight="1"></RadioButton>
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/llApagado"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:weightSum="100"
+        android:padding="12dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblApagado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Apagado"
+                android:textColor="#000"></TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:id="@+id/rgApagado"
+                >
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbAR"
+                    android:text="AR"
+                    android:layout_weight="1"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbSAR"
+                    android:text="SAR"
+                    android:layout_weight="1"></RadioButton>
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/llBatt"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:weightSum="100"
+        android:padding="12dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblBatt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Batería"
+                android:textColor="#000"></TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:id="@+id/rgBatt"
+                >
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbBI"
+                    android:text="BI"
+                    android:layout_weight="1"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rbSBI"
+                    android:text="SBI"
+                    android:layout_weight="1"></RadioButton>
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#00A567"
+        android:text="Guardar"
+        android:textAllCaps="false"
+        android:layout_marginTop="12dp"
+        android:id="@+id/btnGuardaInstall"></Button>
+
+
+
+</LinearLayout>

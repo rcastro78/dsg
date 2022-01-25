@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_700"
+    android:gravity="center"
+
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:elevation="20dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DSG"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:id="@+id/lblToolbar"
+            ></TextView>
+
+
+    </RelativeLayout>
+</androidx.appcompat.widget.Toolbar>

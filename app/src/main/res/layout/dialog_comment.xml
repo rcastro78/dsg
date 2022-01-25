@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/txtComentario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:hint="Comentario"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="3"
+        android:minLines="6"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:weightSum="2">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/btnCommentOK"
+            android:text="Guardar"
+            android:layout_margin="4dp"
+            android:textAllCaps="false"></Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/btnCommentCancel"
+            android:text="Cancelar"
+            android:layout_margin="4dp"
+            android:textAllCaps="false"></Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

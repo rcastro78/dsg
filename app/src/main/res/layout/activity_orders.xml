@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".erp.tecnicos.OrdersActivity"
+    android:orientation="vertical"
+    android:weightSum="100">
+    <include android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"></include>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:weightSum="105"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:layout_margin="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="5"
+                android:orientation="vertical"
+                android:background="#fff">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:id="@+id/lblCliente"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#fff"
+                    android:text="Generales"
+                    android:background="#4EA198"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblTicketCliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+
+                            android:text="Cliente:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/txtTicketCliente"
+                            tools:text="Cliente:"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblTicketSvc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Servicio:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/txtTicketSvc"
+                            tools:text="Servicio:"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblTicketTrabajo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Trabajo:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/txtTicketTrabajo"
+                            tools:text="Trabajo:"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblTicketReq"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Requerido:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/txtTicketReq"
+                            tools:text="Requerido:"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblTicketCompletado"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Completado:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/txtTicketCompletado"
+                            tools:text="Trabajo:"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:weightSum="4"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:background="#fff">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:id="@+id/lblProgramacion"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="#fff"
+                android:background="#4EA198"
+                android:text="Programacion"></TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="100"
+                android:layout_marginLeft="4dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70">
+
+                    <TextView
+                        android:id="@+id/lblTicketFecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="Fecha:"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30">
+
+                    <TextView
+                        android:id="@+id/txtTicketFecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="Servicio:"></TextView>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="100"
+                android:layout_marginLeft="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70">
+
+                    <TextView
+                        android:id="@+id/lblTicketHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="Hora:"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30">
+
+                    <TextView
+                        android:id="@+id/txtTicketHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        tools:text="Trabajo:"></TextView>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="100"
+                android:layout_marginLeft="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70">
+
+                    <TextView
+                        android:id="@+id/lblTicketDir"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="Dirección:"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="100"
+                android:layout_marginLeft="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70">
+
+                    <TextView
+                        android:id="@+id/txtTicketDireccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        tools:text="Direccion"></TextView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:id="@+id/lblProgreso"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="#fff"
+            android:background="#4EA198"
+            android:layout_margin="4dp"
+            android:text="Progreso"></TextView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+
+                android:background="#fff"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblProgreso2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Progreso:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:id="@+id/txtProgreso"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            tools:text="Trabajo:"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblHoraInicio"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Inicio:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:id="@+id/txtHoraInicio"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            tools:text="Trabajo:"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:layout_marginLeft="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70">
+
+                        <TextView
+                            android:id="@+id/lblHoraFin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:text="Completado:"></TextView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30">
+
+                        <TextView
+                            android:id="@+id/txtHoraFin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            tools:text="00:00 PM"></TextView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:id="@+id/lblOrdenes"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="#fff"
+            android:background="#4EA198"
+            android:layout_margin="4dp"
+            android:text="Órdenes"></TextView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvOrders"
+            android:layout_weight="25"
+            android:layout_margin="8dp">
+
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DSG2</string>
+    <string name="sharedpref">sv.com.dsg.spref</string>
+</resources>

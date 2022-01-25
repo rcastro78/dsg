@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".erp.tecnicos.OrdenTrabajoActivity"
+    android:orientation="vertical">
+
+    <include android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="85"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Ticket"
+                    android:paddingLeft="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#000"
+                    android:textSize="16dp"
+                    android:id="@+id/lblTicket"></TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Orden"
+                    android:paddingLeft="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#000"
+                    android:textSize="16dp"
+                    android:id="@+id/lblOrder"></TextView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:weightSum="100"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:weightSum="2">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rlInstalacion"
+                    android:background="#fff"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/imbCheckList"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/checklist"></ImageButton>
+
+
+                    <TextView
+                        android:id="@+id/lblCheckList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imbCheckList"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Tipo de Instalación"
+                        android:textColor="#000"
+                        android:textSize="18dp"></TextView>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rlMateriales"
+                    android:background="#fff"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/imbMateriales"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/tools"></ImageButton>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:layout_below="@id/imbMateriales"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#000"
+                        android:id="@+id/lblMateriales"
+                        android:textSize="18dp"
+                        android:text="Materiales"></TextView>
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rlUbicacion"
+                    android:background="#fff"
+
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/imbUbica"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/materiales"></ImageButton>
+
+                    <TextView
+                        android:id="@+id/lblUbica"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imbUbica"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:textSize="18dp"
+                        android:text="Ubicación"
+                        android:textColor="#000"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rlFirma"
+                    android:background="#fff"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:id="@+id/imbFirma"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/firma"></ImageButton>
+
+                    <TextView
+                        android:id="@+id/lblFirma"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imbFirma"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:textSize="18dp"
+                        android:text="Firma del cliente"
+                        android:textColor="#000"></TextView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:backgroundTint="#fff"
+                    android:text="Finalizar Orden"
+                    android:textAllCaps="false"
+
+                    android:drawableLeft="@drawable/green_check48"
+                    android:id="@+id/btnFinalizarOrden"
+                    android:textColor="#4EA158"></Button>
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

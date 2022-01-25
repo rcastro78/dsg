@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".erp.tecnicos.ProvMaterialesActivity"
+    android:orientation="vertical"
+    >
+
+    <include android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="90"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:background="@color/purple_700">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="PROVISIONAMIENTO DE ARTÍCULOS"
+                    android:textColor="#fff"
+                    android:textSize="18dp"></TextView>
+
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="5"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+
+                android:background="@color/purple_700">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/lblArticulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Artículo"
+                        android:textColor="#fff"></TextView>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Producto"
+                        android:textColor="#fff"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/lblProductoArticulo"></TextView>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/lblMarcaArticulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Marca"
+                        android:textColor="#fff"></TextView>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/lblCatArticulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Categoría"
+                        android:textColor="#fff"></TextView>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/lblEdoArticulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Estado"
+                        android:textColor="#fff"></TextView>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvArticulos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
+
+            <com.nambimobile.widgets.efab.ExpandableFabLayout
+                android:id="@+id/expandable_fab_layout"
+                android:layout_width="192dp"
+                android:layout_height="320dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp">
+
+                <com.nambimobile.widgets.efab.ExpandableFab
+                    android:id="@+id/expandable_fab"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:efab_closingAnticipateTension="0"
+                    app:efab_color="#9374DE"
+                    android:scaleType="center"
+                    app:efab_icon="@drawable/add"
+                    app:efab_iconAnimationRotationDeg="-225"
+                    app:maxImageSize="48dp"
+                    app:efab_size="normal" />
+
+
+                <com.nambimobile.widgets.efab.FabOption
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_color="#FF8800"
+                    app:fab_icon="@drawable/materiales"
+                    app:label_backgroundColor="#808080"
+                    app:label_text="Materiales"
+                    android:id="@+id/foMateriales2"
+                    app:label_textColor="#000" />
+
+
+                <com.nambimobile.widgets.efab.FabOption
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_color="#FF8800"
+                    app:fab_icon="@drawable/articulos"
+                    app:label_backgroundColor="#808080"
+                    app:label_text="Artículos"
+                    android:id="@+id/foArticulos2"
+                    app:label_textColor="#000" />
+
+
+
+                <!-- <com.nambimobile.widgets.efab.FabOption
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_color="#FF8800"
+                    app:fab_icon="@drawable/ic_email_white_24dp"
+                    app:label_text="Email"
+                    app:label_backgroundColor="#808080"
+                    app:label_textColor="#FFC0CB"/>
+                <com.nambimobile.widgets.efab.FabOption
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_color="#5283F5"
+                    app:fab_icon="@drawable/ic_event_white_24dp"
+                    app:label_text="Event"
+                    app:label_backgroundColor="#0000FF"/>
+                <com.nambimobile.widgets.efab.FabOption
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_color="#007F00"
+                    app:fab_icon="@drawable/ic_reminder_white_24dp"
+                    app:label_text="Reminder"
+                    app:label_backgroundColor="#7F7F00"/>-->
+
+            </com.nambimobile.widgets.efab.ExpandableFabLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
