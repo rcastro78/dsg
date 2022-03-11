@@ -16,7 +16,8 @@ import sv.com.seguridadcontrol.app.viewmodel.MainViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
     private var sharedPreferences: SharedPreferences? = null
-
+    var userName:String=""
+    var userPwd:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,20 +28,28 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         setContentView(R.layout.activity_main)
         val SHARED:String=getString(R.string.sharedpref)
         sharedPreferences = getSharedPreferences(SHARED, 0)
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        var userName:String = txtUsuario.text.toString()
-        var userPwd:String = txtClave.text.toString()
-        userName="kevin.rivera"
-        userPwd="12345"
+        userName = sharedPreferences?.getString("userName","")!!
+        userPwd = sharedPreferences?.getString("userPwd","")!!
+        txtUsuario.setText(userName)
+        txtClave.setText(userPwd)
+        //var userName:String = txtUsuario.text.toString()
+        //var userPwd:String = txtClave.text.toString()
+        //userName="t.temporal"
+        //userPwd="12345"
         //7f642e7bff6909fac7b055ec70129e47aa95342a04f1550dc15ed11cdff32ce2
         //8
 
         //emerson.martinez
         //302d6b3a2ecd683c26e1f731897271ca757aa48fd3d802c53ff3a681108ffd1f
         btnLogin.setOnClickListener {
+            userName = txtUsuario.text.toString()
+            userPwd = txtClave.text.toString()
             login(userName,userPwd)
         }
     }
@@ -48,10 +57,11 @@ class MainActivity : AppCompatActivity() {
 
     fun login(usr:String,pwd:String){
         val viewModel = mainViewModel
-        viewModel.getUserDataResultObserver().observe(this,{usuario->
-            if(usuario != null) {
+        viewModel.getUserDataResultObserver().observe(this) { usuario ->
+            if (usuario != null) {
                 var editor: SharedPreferences.Editor = sharedPreferences!!.edit()
                 editor.putString("userId", usuario.login[0].userID)
+                editor.putString("userPwd", pwd)
                 editor.putString("token", usuario.login[0].token)
                 editor.putString("userName", usuario.login[0].user_name)
                 editor.putString("userLastName", usuario.login[0].user_lastname)
@@ -63,10 +73,11 @@ class MainActivity : AppCompatActivity() {
 
                 val intent = Intent(this@MainActivity, MenuPrincipalActivity::class.java)
                 startActivity(intent)
-            }else{
-                Toast.makeText(applicationContext,"No puedes iniciar sesión",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(applicationContext, "No puedes iniciar sesión", Toast.LENGTH_LONG)
+                    .show()
             }
-        })
+        }
 
         viewModel.getUserData(usr,pwd)
     }

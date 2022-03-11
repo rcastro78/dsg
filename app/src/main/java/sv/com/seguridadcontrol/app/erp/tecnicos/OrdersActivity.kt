@@ -86,12 +86,18 @@ class OrdersActivity : AppCompatActivity() {
 
     fun getTicketDetails(ticket_id: String,task: String,token: String){
 
-        ticketDetailsViewModel.getTicketDetailsObserver().observe(this,{details->
-            txtTicketCliente.text=details.ticket[0].client_reason
+        ticketDetailsViewModel.getTicketDetailsObserver().observe(this) { details ->
+            txtTicketCliente.text = details.ticket[0].client_reason
             txtTicketTrabajo.text = details.ticket[0].ticket_type
             txtTicketSvc.text = details.ticket[0].service
-            txtTicketReq.text = details.ticket[0].order_required
-            txtTicketCompletado.text = details.ticket[0].order_completed
+            if(details.ticket[0].order_required.equals("1"))
+                txtTicketReq.text = "Sí"
+            else
+                txtTicketReq.text = "No"
+            if(details.ticket[0].order_completed.equals("1"))
+                txtTicketCompletado.text = "Sí"
+            else
+                txtTicketCompletado.text = "No"
 
 
             val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -109,8 +115,7 @@ class OrdersActivity : AppCompatActivity() {
             txtHoraFin.text = details.ticket[0].ticket_end_date_formatted
 
 
-
-        })
+        }
 
 
         ticketDetailsViewModel.getTicketDetails(ticket_id, task, token)
@@ -119,27 +124,74 @@ class OrdersActivity : AppCompatActivity() {
 
 
     fun getOrderList(ticket_id:String,task:String,token: String){
-        ordersViewModel.getOrdersResultObserver().observe(this,{orders->
+        ordersViewModel.getOrdersResultObserver().observe(this) { orders ->
 
-            orders.order.forEach { o->
+            if(orders.order.isNotEmpty()){
+                orders.order.forEach { o ->
 
-               val orden = Orden(
-                   o.order_num,
-                   o.order_id,
-                   o.progress,
-                   o.order_date,
-                   o.order_start,
-                   o.order_end,
-                   o.order_color)
-                ordersList.add(orden)
+                    var orderNum: String
+                    try {
+                        orderNum = o.order_num
+                    } catch (e: Exception) {
+                        orderNum = ""
+                    }
+
+                    var order_id: String
+                    try {
+                        order_id = o.order_id
+                    } catch (e: Exception) {
+                        order_id = ""
+                    }
+
+                    var order_date: String
+                    try {
+                        order_date = o.order_date
+                    } catch (e: Exception) {
+                        order_date = ""
+                    }
+
+                    var order_start: String
+                    try {
+                        order_start = o.order_start
+                    } catch (e: Exception) {
+                        order_start = ""
+                    }
+                    var order_end: String
+                    try {
+                        order_end = o.order_end
+                    } catch (e: Exception) {
+                        order_end = ""
+                    }
+                    var order_color: String
+                    try {
+                        order_color = o.order_color
+                    } catch (e: Exception) {
+                        order_color = ""
+                    }
+
+                    val orden = Orden(
+                        orderNum,
+                        order_id,
+                        o.progress,
+                        order_date,
+                        order_start,
+                        order_end,
+                        order_color
+                    )
+                    ordersList.add(orden)
+                }
+
+                adapter = OrdersAdapter(ordersList)
+                rvOrders.layoutManager = LinearLayoutManager(this)
+                CoroutineScope(Dispatchers.Main).launch {
+                    rvOrders.adapter = adapter
+                }
+            }else{
+
             }
 
-            adapter = OrdersAdapter(ordersList)
-            rvOrders.layoutManager = LinearLayoutManager(this)
-            CoroutineScope(Dispatchers.Main).launch {
-                rvOrders.adapter = adapter
-            }
-        })
+
+        }
         ordersViewModel.getOrdenes(ticket_id, task, token)
     }
 
@@ -148,11 +200,11 @@ class OrdersActivity : AppCompatActivity() {
 
     fun getTicketsProv(user_id:String,task:String,token: String){
         var ticketProv:ArrayList<TicketProvisioning> = ArrayList()
-        ticketsProvViewModel.getTicketProvisioningResultObserver().observe(this,{tickets->
-            tickets.material?.forEach({ticket->
-                ticket!!.product?.let { Log.d("TICKET", it) }
-            })
-        })
+        ticketsProvViewModel.getTicketProvisioningResultObserver().observe(this) { tickets ->
+            tickets.material?.forEach { ticket ->
+                ticket.product?.let { Log.d("TICKET", it) }
+            }
+        }
 
         ticketsProvViewModel.getTicketProvisioning(user_id, task, token)
 

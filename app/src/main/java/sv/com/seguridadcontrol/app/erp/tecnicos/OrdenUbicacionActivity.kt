@@ -93,7 +93,7 @@ class OrdenUbicacionActivity : AppCompatActivity() {
                 override fun onDrawCreated(b: Bitmap) {
                     //saveImage(b,"$orderId-$ticketId-ubicacion")
                     val bos = ByteArrayOutputStream()
-                    b.compress(Bitmap.CompressFormat.PNG,90,bos)
+                    b.compress(Bitmap.CompressFormat.JPEG,90,bos)
                     val byteArray = bos.toByteArray()
                     val img = Base64.encodeToString(byteArray,Base64.DEFAULT)
                     storeImage(img,"O",orderId!!,"orders_stored_img",token!!)
@@ -116,21 +116,27 @@ class OrdenUbicacionActivity : AppCompatActivity() {
 
 
     private fun storeImage(img:String,imgType:String,orderId:String,task:String,token:String){
-        orderUbicacionViewModel.storeUbicacionObserver().observe(this,{result->
+        orderUbicacionViewModel.storeUbicacionObserver().observe(this) { result ->
 
-            if(result.contains("Exito.")){
-                Toast.makeText(applicationContext,"Ubicación guardada correctamente",Toast.LENGTH_LONG).show()
+            Log.d("UBICACIONRES",result)
+
+            if (result.contains("Exito.")) {
+                Toast.makeText(
+                    applicationContext,
+                    "Ubicación guardada correctamente",
+                    Toast.LENGTH_LONG
+                ).show()
                 val intent = Intent(this@OrdenUbicacionActivity, OrdenTrabajoActivity::class.java)
-                intent.putExtra("orderId",orderId)
-                intent.putExtra("orderNum",orderNum)
-                intent.putExtra("ubicacion",1)
-                val editor : Editor = sharedPreferences!!.edit()
-                editor.putInt("ubicacion",1)
+                intent.putExtra("orderId", orderId)
+                intent.putExtra("orderNum", orderNum)
+                intent.putExtra("ubicacion", 1)
+                val editor: Editor = sharedPreferences!!.edit()
+                editor.putInt("ubicacion", 1)
                 editor.apply()
                 startActivity(intent)
 
             }
-        })
+        }
         orderUbicacionViewModel.storeUbicacionImage(img,imgType,orderId,task,token)
 
 

@@ -44,7 +44,7 @@ class SpinnerAdapter(activity: Activity, items: ArrayList<OrderMaterials>?) : Ba
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var convertView = convertView
         item = items!![position]
-        var holder: ViewHolder? = null
+        var holder: ViewHolder?
         if (convertView == null) {
             val inflater =
                 activity!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

@@ -143,28 +143,28 @@ class TicketsAbiertosFragment: Fragment(){
         }
 
 
-        ticketsViewModel.getTicketsResultObserver().observe(viewLifecycleOwner,{tickets->
-            if(tickets.ticket != null) {
+        ticketsViewModel.getTicketsResultObserver().observe(viewLifecycleOwner) { tickets ->
+            if (tickets.ticket != null) {
                 tickets.ticket.forEach { t ->
 
-                    var colorType="#000000"
-                    if(t.ticket_color_type == null){
-                        colorType=t.priority_color
-                    }else{
-                        colorType=t.ticket_color_type
+                    var colorType = "#000000"
+                    if (t.ticket_color_type == null) {
+                        colorType = t.priority_color
+                    } else {
+                        colorType = t.ticket_color_type
                     }
-                    var ticketCode="--"
-                    if(t.ticket_code != null){
+                    var ticketCode = "--"
+                    if (t.ticket_code != null) {
                         ticketCode = t.ticket_code
                     }
-                    var ticketEndDate=""
-                    if(t.ticket_end_date != null){
-                        ticketEndDate=t.ticket_end_date
+                    var ticketEndDate = ""
+                    if (t.ticket_end_date != null) {
+                        ticketEndDate = t.ticket_end_date
                     }
 
-                    var ticketStartDate=""
-                    if(t.ticket_start_date != null){
-                        ticketStartDate=t.ticket_start_date
+                    var ticketStartDate = ""
+                    if (t.ticket_start_date != null) {
+                        ticketStartDate = t.ticket_start_date
                     }
                     val ticket = TicketData(
                         t.ticket_id,
@@ -209,12 +209,16 @@ class TicketsAbiertosFragment: Fragment(){
                 CoroutineScope(Dispatchers.Main).launch {
                     rvTickets.adapter = adapter
                 }
-            }else{
-                Toast.makeText(requireActivity().applicationContext,"No tienes tickets asignados", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(
+                    requireActivity().applicationContext,
+                    "No tienes tickets asignados",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
 
-        })
+        }
 
         ticketsViewModel.getTickets(userId,type,start, quantity, task, token)
 

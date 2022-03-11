@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/activity_orden_materiales.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_orden_trabajo.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/activity_orden_ubicacion.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_orders.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_orders.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_orders2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_principal.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_prov_articulos.xml" value="0.33" />
@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/activity_tipo_instalacion.xml" value="0.2" />
         <entry key="app/src/main/res/layout/circular_background.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/layout/dialog_comment.xml" value="0.13984375" />
+        <entry key="app/src/main/res/layout/item_articulo_orden.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_detail_order_article.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/layout/item_orden_materiales.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.33645833333333336" />

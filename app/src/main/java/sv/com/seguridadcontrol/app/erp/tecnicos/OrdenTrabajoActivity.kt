@@ -67,28 +67,47 @@ class OrdenTrabajoActivity : AppCompatActivity() {
         getOrderVerificationDetails(orderId,userId!!,"orders_progress_verification",token!!)
 
         imbMateriales.setOnClickListener{
-            val intent = Intent(this@OrdenTrabajoActivity, OrdenMaterialesActivity::class.java)
-            intent.putExtra("orderNum",orderNum)
-            intent.putExtra("orderId",orderId)
-            startActivity(intent)
+            //if(!hasMaterials) {
+                val intent = Intent(this@OrdenTrabajoActivity, OrdenMaterialesActivity::class.java)
+                intent.putExtra("orderNum", orderNum)
+                intent.putExtra("orderId", orderId)
+                startActivity(intent)
+            //}else{
+            //    Toast.makeText(applicationContext,"Los materiales ya fueron enviados",Toast.LENGTH_LONG).show()
+            //}
+
         }
 
         imbFirma.setOnClickListener{
-            val intent = Intent(this@OrdenTrabajoActivity, OrdenFirmaActivity::class.java)
-            intent.putExtra("orderId",orderId)
-            startActivity(intent)
+            if(!hasSignature) {
+                val intent = Intent(this@OrdenTrabajoActivity, OrdenFirmaActivity::class.java)
+                intent.putExtra("orderId", orderId)
+                startActivity(intent)
+            }else
+            {
+                Toast.makeText(applicationContext,"La firma ya fue enviada",Toast.LENGTH_LONG).show()
+            }
         }
 
         imbUbica.setOnClickListener{
-            val intent = Intent(this@OrdenTrabajoActivity, OrdenUbicacionActivity::class.java)
-            intent.putExtra("orderId",orderId)
-            intent.putExtra("orderNum",orderNum)
-            startActivity(intent)
+            //if(!hasImage) {
+                val intent = Intent(this@OrdenTrabajoActivity, OrdenUbicacionActivity::class.java)
+                intent.putExtra("orderId", orderId)
+                intent.putExtra("orderNum", orderNum)
+                startActivity(intent)
+            /*}else{
+                Toast.makeText(applicationContext,"La imagen ya fue enviada",Toast.LENGTH_LONG).show()
+            }*/
         }
         imbCheckList.setOnClickListener{
-            val intent = Intent(this@OrdenTrabajoActivity, TipoInstalacionActivity::class.java)
-            intent.putExtra("orderId",orderId)
-            startActivity(intent)
+            if(!hasInstall) {
+                val intent = Intent(this@OrdenTrabajoActivity, TipoInstalacionActivity::class.java)
+                intent.putExtra("orderId", orderId)
+                intent.putExtra("orderNum", orderNum)
+                startActivity(intent)
+            }else{
+                Toast.makeText(applicationContext,"Los materiales ya fueron enviados",Toast.LENGTH_LONG).show()
+            }
         }
 
 
@@ -114,11 +133,14 @@ class OrdenTrabajoActivity : AppCompatActivity() {
         btnCommentOK.setOnClickListener {
             //Invocar al view model para enviar el comentario
             val comentario:String = txtComentario!!.text.toString()
-            orderVerificationVieModel.storeFacilitiesObserver().observe(this,{result->
-                if(result.equals("Exito")){
-                    Toast.makeText(applicationContext,"Comentario enviado",Toast.LENGTH_LONG).show()
+            orderVerificationVieModel.storeFacilitiesObserver().observe(this) { result ->
+                if (result.equals("Exito")) {
+                    Toast.makeText(applicationContext, "Comentario enviado", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_LONG).show()
                 }
-            })
+            }
             val c = Calendar.getInstance().time
             val df = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
             val fecha = df.format(c)
@@ -135,37 +157,44 @@ class OrdenTrabajoActivity : AppCompatActivity() {
 
 
     fun getOrderVerificationDetails(order_id:String,user_id:String,task:String,token:String){
-        orderVerificationVieModel.getOrderVerificationObserver().observe(this,{st->
+        orderVerificationVieModel.getOrderVerificationObserver().observe(this) { st ->
 
             val fac = st.status[0].facility
-            if(fac.contains("|")){
+            if (fac.contains("|")) {
                 var div = fac.split("|")
-                if(div.count()==4){
+                if (div.count() == 4) {
                     rlInstalacion.setBackgroundColor(Color.parseColor("#4EA158"))
                     hasInstall = true
+                    rlInstalacion.isClickable=false
+                    Toast.makeText(applicationContext,"La instalación ya fue enviada",Toast.LENGTH_LONG).show()
+
                 }
             }
 
-           hasImage = st.status[0].image
-            if(hasImage){
+            hasImage = st.status[0].image
+            if (hasImage) {
                 rlUbicacion.setBackgroundColor(Color.parseColor("#4EA158"))
+                rlUbicacion.isClickable=false
+                Toast.makeText(applicationContext,"La ubicación ya fue enviada",Toast.LENGTH_LONG).show()
             }
 
 
             hasSignature = st.status[0].image_signature
-            if(hasSignature){
+            if (hasSignature) {
                 rlFirma.setBackgroundColor(Color.parseColor("#4EA158"))
+                rlFirma.isClickable=false
+                Toast.makeText(applicationContext,"La firma ya fue enviada",Toast.LENGTH_LONG).show()
             }
             hasMaterials = st.status[0].materials_quantity
-            if(hasMaterials){
+            if (hasMaterials) {
                 rlMateriales.setBackgroundColor(Color.parseColor("#4EA158"))
+                rlMateriales.isClickable=false
+                Toast.makeText(applicationContext,"Los materiales ya fueron procesados",Toast.LENGTH_LONG).show()
             }
 
-            //btnFinalizarOrden.isEnabled = hasInstall && hasImage && hasSignature && hasMaterials
 
 
-
-        })
+        }
         orderVerificationVieModel.getOrderVerificationDetail(order_id,user_id, task, token)
     }
 

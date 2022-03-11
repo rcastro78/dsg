@@ -101,19 +101,29 @@ class OrdenMaterialesActivity : AppCompatActivity() {
 
                 materialsList+="]"
                 materialsList = materialsList.replace("},]","}]")
-                //Log.d("MATERIALES",materialsList)
+                Log.d("MATERIALESORDER",materialsList)
                 CoroutineScope(Dispatchers.Main).launch {
                     orderMaterialsViewModel.getOrderMaterialsStoreObserver()
-                        .observe(this@OrdenMaterialesActivity, { result ->
-                            if(result.contains("Exito")){
-                                Toast.makeText(applicationContext,"Materiales procesados exitosamente",Toast.LENGTH_LONG).show()
-                                val intent = Intent(this@OrdenMaterialesActivity, OrdenTrabajoActivity::class.java)
-                                intent.putExtra("orderId",orderId)
+                        .observe(this@OrdenMaterialesActivity) { result ->
+                            if (result.contains("Exito")) {
+                                /*Toast.makeText(
+                                    applicationContext,
+                                    "Materiales procesados exitosamente",
+                                    Toast.LENGTH_LONG
+                                ).show()*/
+
+                                  Log.d("MATERIALESORDER",result)
+
+                                val intent = Intent(
+                                    this@OrdenMaterialesActivity,
+                                    OrdenTrabajoActivity::class.java
+                                )
+                                intent.putExtra("orderId", orderId)
                                 startActivity(intent)
-                            }else{
-                                Toast.makeText(applicationContext,"No se pudo procesar. Intente mas tarde o contacte a soporte",Toast.LENGTH_LONG).show()
+                            } else {
+                                Log.d("MATERIALESORDER","Error")
                             }
-                        })
+                        }
                     orderMaterialsViewModel.storeOrderMaterials(
                         orderId,
                         materialsList,
@@ -212,19 +222,19 @@ class OrdenMaterialesActivity : AppCompatActivity() {
 
 
 private fun getMaterials(order_id:String, user_id:String, task:String, token:String){
-orderMaterialsViewModel.getOrderMaterialsObserver().observe(this,{ordenMaterial->
+orderMaterialsViewModel.getOrderMaterialsObserver().observe(this) { ordenMaterial ->
 
-ordenMaterial.order.forEach { o->
-    val ordenM = OrderMaterials(o.materials,o.materials_id,o.materials_quantity,"",o.unity)
-    lstMateriales.add(ordenM)
-}
-val adapter = SpinnerAdapter(this@OrdenMaterialesActivity,lstMateriales)
-sprMateriales.adapter = adapter
+    ordenMaterial.order.forEach { o ->
+        val ordenM = OrderMaterials(o.materials, o.materials_id, o.materials_quantity, "", o.unity)
+        lstMateriales.add(ordenM)
+    }
+    val adapter = SpinnerAdapter(this@OrdenMaterialesActivity, lstMateriales)
+    sprMateriales.adapter = adapter
 /*rvMaterialOrden.layoutManager = LinearLayoutManager(this)
 rvMaterialOrden.adapter = adapter*/
-})
+}
 
-orderMaterialsViewModel.getOrderMaterials(order_id, user_id, task, token)
+    orderMaterialsViewModel.getOrderMaterials(order_id, user_id, task, token)
 
 }
 }

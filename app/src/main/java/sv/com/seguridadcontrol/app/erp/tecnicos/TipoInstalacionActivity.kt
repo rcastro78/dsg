@@ -33,6 +33,7 @@ class TipoInstalacionActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences(SHARED, 0)
         orderId = intent.getStringExtra("orderId")!!
         orderNum = intent.getStringExtra("orderNum")!!
+
         userId = sharedPreferences!!.getString("userId","")
         token = sharedPreferences!!.getString("token","")
         val tfBold = Typeface.createFromAsset(assets,"fonts/Nunito-Bold.ttf")

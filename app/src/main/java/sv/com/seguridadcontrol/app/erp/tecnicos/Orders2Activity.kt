@@ -2,7 +2,6 @@ package sv.com.seguridadcontrol.app.erp.tecnicos
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,16 +10,16 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_orden_detalle_articulo.*
 import kotlinx.android.synthetic.main.activity_orders2.*
 import sv.com.seguridadcontrol.app.R
-import sv.com.seguridadcontrol.app.adapter.OrdersDetailArticleAdapter
+import sv.com.seguridadcontrol.app.adapter.OrderDetailsArticle2Adapter
 import sv.com.seguridadcontrol.app.modelos.Unit
 import sv.com.seguridadcontrol.app.viewmodel.OrderDetailArticleViewModel
 
 class Orders2Activity : AppCompatActivity() {
     private var sharedPreferences: SharedPreferences? = null
     private lateinit var orderDetailArticleViewModel : OrderDetailArticleViewModel
+    var articulos:ArrayList<Unit> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orders2)
@@ -87,8 +86,8 @@ class Orders2Activity : AppCompatActivity() {
         txtUnidadDeColor.typeface = tf
         lblUnidadDeColor.typeface = tf
 
-        getDetailArticle(orderId!!,"orders_detail_article",token!!)
-        getDetailArticleDe(orderId,"orders_detail_article_cambio", token)
+        getDetailArticle(intent.getStringExtra("orderId")!!,"orders_detail_article",token!!)
+        //getDetailArticleDe(orderId,"orders_detail_article_cambio", token)
 
 
 
@@ -105,32 +104,53 @@ class Orders2Activity : AppCompatActivity() {
 
 
     fun getDetailArticle(order_num:String, task:String, token:String){
-        orderDetailArticleViewModel.getOrderDetailArticlesObserver().observe(this,{res->
+        orderDetailArticleViewModel.getOrderDetailArticlesObserver().observe(this) { res ->
             try {
                 res.unit.forEach { r ->
                     Log.d("ARTICLE", "${r.article}")
                     //No es artículo, es unidad
                     if (r.article == null) {
                         txtUniActual.text = r.unit
-                        txtUnidadActualMarca.text = r.unit_brand
-                        txtUnidadActualModelo.text = r.unit_model
-                        txtUnidadActualColor.text = r.unit_color
+                        var brand = "N/D"
+                        try{
+                            brand = r.unit_brand
+                        }catch (e:Exception){}
+                        txtUnidadActualMarca.text = brand
+
+                        var unit_model = "N/D"
+                        try{
+                            unit_model = r.unit_model
+                        }catch (e:Exception){}
+                        txtUnidadActualModelo.text = unit_model
+                        var unit_color = "N/D"
+                        try{
+                            unit_color = r.unit_color
+                        }catch (e:Exception){}
+
+                        txtUnidadActualColor.text = unit_color
+                    }else{
+                        articulos.add(Unit(r.article,r.category,r.id_article,"","",r.product,"","","",""))
                     }
 
                 }
-            }catch (ex:Exception){
 
+                val adapter = OrderDetailsArticle2Adapter(articulos)
+                rvArticulosUnidades.layoutManager = LinearLayoutManager(this)
+                rvArticulosUnidades.adapter = adapter
+
+            } catch (ex: Exception) {
+                Log.d("ARTICLE", "${ex.message}")
             }
 
-       })
+        }
 
         orderDetailArticleViewModel.getOrderDetailArticles(order_num, task, token)
     }
 
 
     fun getDetailArticleDe(order_num:String, task:String, token:String){
-        orderDetailArticleViewModel.getOrderDetailArticlesDeObserver().observe(this,{res->
-            if(res.unit != null) {
+        orderDetailArticleViewModel.getOrderDetailArticlesDeObserver().observe(this) { res ->
+            if (res.unit != null) {
                 res.unit.forEach { r ->
                     Log.d("ARTICLE", "${r.article}")
                     //No es artículo, es unidad
@@ -144,7 +164,7 @@ class Orders2Activity : AppCompatActivity() {
                 }
             }
 
-        })
+        }
 
         orderDetailArticleViewModel.getOrderDetailArticlesDe(order_num, task, token)
     }

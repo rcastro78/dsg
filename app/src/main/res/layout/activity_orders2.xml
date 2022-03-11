@@ -13,16 +13,19 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"></include>
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/tool_bar">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/tool_bar">
+        >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="140dp"
 
         android:layout_margin="4dp">
 
@@ -69,10 +72,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="30">
+                    android:layout_weight="30"
+                    >
 
                     <TextView
                         android:id="@+id/txtTicketCliente"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
@@ -211,7 +216,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="140dp"
 
         android:layout_margin="4dp">
 
@@ -409,13 +414,16 @@
                         android:id="@+id/lblUnidadActualArticulos"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/purple_700"
-                        android:clickable="true"
+
                         android:layout_centerInParent="true"
 
-                        android:text="Ver artículos"></TextView>
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textColor="@color/purple_700"></TextView>
+
+
+
+
 
                 </RelativeLayout>
 
@@ -429,7 +437,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="140dp"
 
         android:layout_margin="4dp">
 
@@ -626,10 +634,28 @@
 
 
     </RelativeLayout>
+        <TextView
+            android:id="@+id/lblDeta"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:background="#4EA198"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Artículos"
+            android:textColor="#fff"></TextView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvArticulosUnidades"
+            />
+        </RelativeLayout>
 
 
     </LinearLayout>
-
+</ScrollView>
 
     <LinearLayout
         android:layout_width="180dp"

@@ -1,6 +1,7 @@
 package sv.com.seguridadcontrol.app.erp.tecnicos
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -18,12 +19,19 @@ class ProvMaterialesActivity : AppCompatActivity() {
     var provisionamiento:ArrayList<ProvisionamientoMateriales> = ArrayList()
     private lateinit var adapter: OrdersMaterialsProvAdapter
     private lateinit var ordersProvViewModel: OrdersProvisioningViewModel
+    private var sharedPreferences: SharedPreferences? = null
+    var userId:String?=""
+    var token:String?=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prov_materiales)
+        val SHARED:String=getString(R.string.sharedpref)
+        sharedPreferences = getSharedPreferences(SHARED, 0)
+        userId = sharedPreferences!!.getString("userId","")
+        token = sharedPreferences!!.getString("token","")
         ordersProvViewModel = ViewModelProvider(this).get(OrdersProvisioningViewModel::class.java)
-        getProvisioningMaterials("7","orders_aprovisionamiento","302d6b3a2ecd683c26e1f731897271ca757aa48fd3d802c53ff3a681108ffd1f")
+        getProvisioningMaterials(userId!!,"orders_aprovisionamiento",token!!)
 
         foArticulos.setOnClickListener {
             val intent = Intent(this@ProvMaterialesActivity,ProvArticulosActivity::class.java)
