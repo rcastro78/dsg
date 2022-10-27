@@ -1,5 +1,6 @@
 package sv.com.seguridadcontrol.app.erp.tecnicos
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
@@ -7,14 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.ArrayMap
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_orden_materiales.*
 import kotlinx.android.synthetic.main.activity_prov_articulos.*
 import kotlinx.coroutines.CoroutineScope
@@ -43,7 +46,7 @@ class OrdenMaterialesActivity : AppCompatActivity() {
     var nomMaterial: String = ""
     var unidades: String = ""
     private lateinit var db: AppDatabase
-    private lateinit var sprAdapter: SpinnerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,27 +69,81 @@ class OrdenMaterialesActivity : AppCompatActivity() {
         orderViewModel =
             ViewModelProvider(this).get(OrdersViewModel::class.java)
 
-        getMaterials(orderId, userId!!, "orders_user_materials", token!!)
+
         CoroutineScope(Dispatchers.IO).launch {
-            fillMaterials(orderId)
+            fillMaterials(orderId,this@OrdenMaterialesActivity)
         }
 
 
-        sprMateriales.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                val material: OrderMaterials =
-                    sprMateriales.getItemAtPosition(pos) as OrderMaterials
-                cantidad = txtCantidadMaterial.text.toString()
-                idMaterial = material.materials_id
-                nomMaterial = material.materials
-                unidades = material.unity
+        btnAgregarMateriales.setOnClickListener {
+            val bottomSheet1 = BottomSheetDialog(this@OrdenMaterialesActivity)
+            bottomSheet1.setContentView(R.layout.activity_materiales_dialog)
+            val sprMateriales: Spinner? = bottomSheet1.findViewById(R.id.sprMateriales)
+            val btnGuardarMateriales: Button? = bottomSheet1.findViewById(R.id.btnGuardarMateriales)
+            val txtCantidadMaterial: TextView? = bottomSheet1.findViewById(R.id.txtCantidadMaterial)
+            getMaterials(sprMateriales!!,orderId, userId!!, "orders_user_materials", token!!)
+            sprMateriales?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    val material: OrderMaterials =
+                        sprMateriales?.getItemAtPosition(pos) as OrderMaterials
+                    cantidad = txtCantidadMaterial?.text.toString()
+                    idMaterial = material.materials_id
+                    nomMaterial = material.materials
+                    unidades = material.unity
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            btnGuardarMateriales?.setOnClickListener {
+                db = AppDatabase.getInstance(this.application)
+                cantidad = txtCantidadMaterial?.text.toString()
+                if (!cantidad.equals("0")) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        if(db.iMaterialesDAO.getMaterialOrden(orderId,idMaterial).isEmpty()) {
+                            db.iMaterialesDAO.insert(
+                                orderId,
+                                idMaterial,
+                                nomMaterial,
+                                cantidad,
+                                unidades
+                            )
+                            CoroutineScope(Dispatchers.Main).launch {
+                                Toast.makeText(applicationContext,"$nomMaterial agregado exitosamente",Toast.LENGTH_LONG).show()
+                            }
+                        }else{
+                            CoroutineScope(Dispatchers.Main).launch {
+                                Toast.makeText(applicationContext,"Ya se ingresó este material",Toast.LENGTH_LONG).show()
+                            }
+
+                        }
+                        fillMaterials(orderId,this@OrdenMaterialesActivity)
+                    }
+
+                } else {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        Toast.makeText(applicationContext, "No puedes guardar 0", Toast.LENGTH_LONG).show()
+                    }
+
+                }
 
             }
 
+
+
+
+            bottomSheet1.show()
         }
+
+
+
+
+
+
 
         btnProcesarMateriales.setOnClickListener {
             db = AppDatabase.getInstance(this.application)
@@ -119,17 +176,21 @@ class OrdenMaterialesActivity : AppCompatActivity() {
                                     OrdenTrabajoActivity::class.java
                                 )
                                 intent.putExtra("orderId", orderId)
+                                intent.putExtra("orderNum", orderId)
+                                //intent.getStringExtra("orderNum")!!
                                 startActivity(intent)
                             } else {
                                 Log.d("MATERIALESORDER","Error")
                             }
                         }
-                    orderMaterialsViewModel.storeOrderMaterials(
-                        orderId,
-                        materialsList,
-                        "orders_stored_materials",
-                        token
-                    )
+                    if (token != null) {
+                        orderMaterialsViewModel.storeOrderMaterials(
+                            orderId,
+                            materialsList,
+                            "orders_stored_materials",
+                            token
+                        )
+                    }
                 }
 
 
@@ -138,39 +199,6 @@ class OrdenMaterialesActivity : AppCompatActivity() {
         }
 
 
-        btnGuardarMateriales.setOnClickListener {
-            db = AppDatabase.getInstance(this.application)
-            cantidad = txtCantidadMaterial.text.toString()
-            if (!cantidad.equals("0")) {
-                CoroutineScope(Dispatchers.IO).launch {
-                   if(db.iMaterialesDAO.getMaterialOrden(orderId,idMaterial).isEmpty()) {
-                       db.iMaterialesDAO.insert(
-                           orderId,
-                           idMaterial,
-                           nomMaterial,
-                           cantidad,
-                           unidades
-                       )
-                       CoroutineScope(Dispatchers.Main).launch {
-                           Toast.makeText(applicationContext,"$nomMaterial agregado exitosamente",Toast.LENGTH_LONG).show()
-                       }
-                   }else{
-                       CoroutineScope(Dispatchers.Main).launch {
-                           Toast.makeText(applicationContext,"Ya se ingresó este material",Toast.LENGTH_LONG).show()
-                       }
-
-                   }
-                    fillMaterials(orderId)
-                }
-
-            } else {
-                CoroutineScope(Dispatchers.Main).launch {
-                Toast.makeText(applicationContext, "No puedes guardar 0", Toast.LENGTH_LONG).show()
-                }
-
-            }
-
-        }
 
 
 
@@ -186,31 +214,34 @@ class OrdenMaterialesActivity : AppCompatActivity() {
     }
 
 
-    private fun startOrder(order_id: String, user_id: String, task: String, token: String) {
-        orderViewModel.getStartOrderObserver().observe(this, { result ->
-            Log.d("START_ORDER", result)
-        })
-        orderViewModel.startOder(order_id, user_id, task, token)
-    }
 
 
-    private fun fillMaterials(order_id: String) {
-        db = AppDatabase.getInstance(this.application)
-        //orderMaterialsViewModel.getOrderMaterialsObserver().observe(this,{ordenMaterial->
-        val materialesOrden = db.iMaterialesDAO.getMateriales(order_id)
+
+    fun fillMaterials(order_id: String,context: Context) {
+        db = AppDatabase.getInstance(context)
         var lstMateriales2: ArrayList<OrderMaterials> = ArrayList()
-        materialesOrden.forEach { o ->
-            val ordenM =
-                OrderMaterials(o.nombre_material!!, o.id_material!!, o.cantidad!!, "", o.unidad!!)
-            lstMateriales2.add(ordenM)
+        //orderMaterialsViewModel.getOrderMaterialsObserver().observe(this,{ordenMaterial->
+        CoroutineScope(Dispatchers.IO).launch {
+            val materialesOrden = db.iMaterialesDAO.getMateriales(order_id)
 
+            materialesOrden.forEach { o ->
+                val ordenM =
+                    OrderMaterials(
+                        o.nombre_material!!,
+                        o.id_material!!,
+                        o.cantidad!!,
+                        "",
+                        o.unidad!!
+                    )
+                lstMateriales2.add(ordenM)
+
+            }
         }
-
         CoroutineScope(Dispatchers.Main).launch {
            // Toast.makeText(applicationContext,"${lstMateriales2.size}",Toast.LENGTH_LONG).show()
             rvMaterialOrden.layoutManager =
                 LinearLayoutManager(this@OrdenMaterialesActivity, RecyclerView.VERTICAL, false)
-            val adapter = OrdersMaterialsAdapter(lstMateriales2)
+            val adapter = OrdersMaterialsAdapter(lstMateriales2,order_id,this@OrdenMaterialesActivity)
             rvMaterialOrden.adapter = adapter
         }
 
@@ -221,7 +252,7 @@ class OrdenMaterialesActivity : AppCompatActivity() {
 
 
 
-private fun getMaterials(order_id:String, user_id:String, task:String, token:String){
+private fun getMaterials(spr:Spinner, order_id:String, user_id:String, task:String, token:String){
 orderMaterialsViewModel.getOrderMaterialsObserver().observe(this) { ordenMaterial ->
 
     ordenMaterial.order.forEach { o ->
@@ -229,12 +260,34 @@ orderMaterialsViewModel.getOrderMaterialsObserver().observe(this) { ordenMateria
         lstMateriales.add(ordenM)
     }
     val adapter = SpinnerAdapter(this@OrdenMaterialesActivity, lstMateriales)
-    sprMateriales.adapter = adapter
-/*rvMaterialOrden.layoutManager = LinearLayoutManager(this)
-rvMaterialOrden.adapter = adapter*/
+    spr.adapter = adapter
 }
 
     orderMaterialsViewModel.getOrderMaterials(order_id, user_id, task, token)
 
 }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_transaccional_1, menu)
+
+        // return true so that the menu pop up is opened
+        return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean
+    {
+        if (item.itemId == R.id.action_back) {
+            onBackPressed()
+        }
+        return true
+    }
+
+
 }
+
+

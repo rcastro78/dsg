@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".erp.clientes.FollowProspectActivity">
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"></include>
+
+    <LinearLayout android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Cliente prospecto"
+                android:id="@+id/lblClienteProspecto"
+                android:gravity="center_vertical"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+<Spinner
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/sprProspecto"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Tipo de comunicación"
+                android:id="@+id/lblTipoCom"
+                android:gravity="center_vertical"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35">
+
+            <Spinner
+                android:id="@+id/sprTipoCom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblFechHor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Fecha agendada" />
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:weightSum="2">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtFechaAgendada"
+                android:background="@null"
+                android:hint="dd/mm/aaaa"
+                android:text="22/08/2022"
+                android:layout_marginRight="6dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtHoraAgendada"
+                android:background="@null"
+                android:hint="00:00"
+                android:text="04:00"
+                android:layout_marginLeft="6dp"/>
+            </LinearLayout>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:id="@+id/chkAgendaPM"
+                android:text="PM"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblFechHorCont"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Fecha de contacto" />
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:weightSum="2">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtFechaCont"
+                android:background="@null"
+                android:hint="dd/mm/aaaa"
+                android:text="24/08/2022"
+                android:layout_marginRight="6dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtHoraCont"
+                android:background="@null"
+                android:hint="00:00"
+                android:text="09:00"
+                android:layout_marginLeft="6dp"/>
+            </LinearLayout>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:id="@+id/chkContacto"
+                android:text="PM"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="65">
+
+            <TextView
+                android:id="@+id/lblFechHorProx"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Fecha del próximo contacto" />
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:weightSum="2">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtFechaProx"
+                android:background="@null"
+                android:hint="dd/mm/aaaa"
+                android:text="31/08/2022"
+                android:layout_marginRight="6dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/txtHoraProx"
+                android:background="@null"
+                android:hint="00:00"
+                android:text="07:00"
+                android:layout_marginLeft="6dp"/>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:id="@+id/chkProxCont"
+                android:text="PM"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="90">
+
+            <TextView
+                android:id="@+id/lblComentario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Comentario" />
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:weightSum="100">
+
+            <EditText android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/txtComentario"
+                android:hint="Escribe tu comentario"
+                android:background="@null"
+                android:inputType="text"
+                android:text="Texto de prueba"
+                android:gravity="start|top"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

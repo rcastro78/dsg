@@ -1,15 +1,21 @@
 package sv.com.seguridadcontrol.app.erp.tecnicos
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_orders.*
+import kotlinx.android.synthetic.main.activity_orders3.*
 import kotlinx.android.synthetic.main.activity_prov_materiales.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,9 +27,7 @@ import sv.com.seguridadcontrol.app.viewmodel.OrdersViewModel
 import sv.com.seguridadcontrol.app.viewmodel.TicketDetailsViewModel
 import sv.com.seguridadcontrol.app.viewmodel.TicketProvisioningViewModel
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 class OrdersActivity : AppCompatActivity() {
 
@@ -32,11 +36,23 @@ class OrdersActivity : AppCompatActivity() {
     private lateinit var ticketDetailsViewModel:TicketDetailsViewModel
     private lateinit var adapter: OrdersAdapter
     private var sharedPreferences: SharedPreferences? = null
-
+    var totalOrdersNoCompletadas:Int=0
     var ordersList:ArrayList<Orden> = ArrayList()
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_orders)
+        setContentView(R.layout.activity_orders3)
         val ticketId = intent.getStringExtra("ticketId")
         val ticketCod = intent.getStringExtra("ticketCod")
         val ticketColor = intent.getStringExtra("ticketColor")
@@ -44,6 +60,7 @@ class OrdersActivity : AppCompatActivity() {
 
         val SHARED:String=getString(R.string.sharedpref)
         sharedPreferences = getSharedPreferences(SHARED, 0)
+        val userId: String? = sharedPreferences!!.getString("userId", "")
         val token:String? = sharedPreferences!!.getString("token","")
         val editor : SharedPreferences.Editor = sharedPreferences!!.edit()
         editor.putString("ticketId",ticketId)
@@ -60,7 +77,32 @@ class OrdersActivity : AppCompatActivity() {
         lblToolbar.text = "Ordenes para el ticket:  ${ticketId}"
         lblToolbar.typeface = tf
 
-        txtTicketCliente.typeface = tf
+        rlCerrarTicket.setOnClickListener {
+            if(totalOrdersNoCompletadas==0){
+                val c = Calendar.getInstance().time
+                val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val fecha = df.format(c)
+                ticketCompleted(ticketId!!,userId!!,"","ticket_completed_offline",token!!,fecha)
+            }else{
+                Toast.makeText(applicationContext,"Todavía no puedes cerrar el ticket",Toast.LENGTH_LONG).show()
+            }
+        }
+
+        imgDocument.setOnClickListener{
+
+            val bottomSheet1 = BottomSheetDialog(this@OrdersActivity)
+            bottomSheet1.setContentView(R.layout.activity_orders)
+
+            ticketsProvViewModel = ViewModelProvider(this).get(TicketProvisioningViewModel::class.java)
+            ticketDetailsViewModel = ViewModelProvider(this).get(TicketDetailsViewModel::class.java)
+            getTicketDetails(bottomSheet1, ticketId!!,"ticket_show_ticket_details",token!!)
+
+            bottomSheet1.show()
+
+        }
+
+
+        /*txtTicketCliente.typeface = tf
         txtTicketTrabajo.typeface = tf
         txtTicketSvc.typeface = tf
         txtTicketReq.typeface = tf
@@ -72,32 +114,63 @@ class OrdersActivity : AppCompatActivity() {
 
         txtProgreso.typeface = tf
         txtHoraInicio.typeface = tf
-        txtHoraFin.typeface = tf
+        txtHoraFin.typeface = tf*/
 
 
         ordersViewModel = ViewModelProvider(this).get(OrdersViewModel::class.java)
-        ticketsProvViewModel = ViewModelProvider(this).get(TicketProvisioningViewModel::class.java)
+        /*ticketsProvViewModel = ViewModelProvider(this).get(TicketProvisioningViewModel::class.java)
         ticketDetailsViewModel = ViewModelProvider(this).get(TicketDetailsViewModel::class.java)
+
+        getTicketDetails(ticketId!!,"ticket_show_ticket_details",token!!)*/
+        Log.d("ORDENES",ticketId!!)
+        Log.d("ORDENES",token!!)
         getOrderList(ticketId!!,"orders_get_order_list",token!!)
-        getTicketDetails(ticketId!!,"ticket_show_ticket_details",token!!)
 
     }
 
 
-    fun getTicketDetails(ticket_id: String,task: String,token: String){
+    fun getTicketDetails(bottomSheet1:BottomSheetDialog, ticket_id: String,task: String,token: String){
+        val tf = Typeface.createFromAsset(assets,"fonts/Nunito-Bold.ttf")
+        val txtTicketCliente: TextView? = bottomSheet1.findViewById(R.id.txtTicketCliente)
+        val txtTicketTrabajo: TextView? = bottomSheet1.findViewById(R.id.txtTicketTrabajo)
+        val txtTicketSvc: TextView? = bottomSheet1.findViewById(R.id.txtTicketSvc)
+        val txtTicketCompletado: TextView? = bottomSheet1.findViewById(R.id.txtTicketCompletado)
+        val txtTicketFecha: TextView? = bottomSheet1.findViewById(R.id.txtTicketFecha)
+        val txtTicketHora: TextView? = bottomSheet1.findViewById(R.id.txtTicketHora)
+        val txtTicketDireccion: TextView? = bottomSheet1.findViewById(R.id.txtTicketDireccion)
+        val txtProgreso: TextView? = bottomSheet1.findViewById(R.id.txtProgreso)
+        val txtHoraInicio: TextView? = bottomSheet1.findViewById(R.id.txtHoraInicio)
+        val txtHoraFin: TextView? = bottomSheet1.findViewById(R.id.txtHoraFin)
+        txtTicketCliente?.typeface = tf
+        txtTicketTrabajo?.typeface = tf
+        txtTicketSvc?.typeface = tf
+        txtTicketReq?.typeface = tf
+        txtTicketCompletado?.typeface = tf
+
+        txtTicketFecha?.typeface = tf
+        txtTicketHora?.typeface = tf
+        txtTicketDireccion?.typeface = tf
+
+        txtProgreso?.typeface = tf
+        txtHoraInicio?.typeface = tf
+        txtHoraFin?.typeface = tf
+
+
+
+
 
         ticketDetailsViewModel.getTicketDetailsObserver().observe(this) { details ->
-            txtTicketCliente.text = details.ticket[0].client_reason
-            txtTicketTrabajo.text = details.ticket[0].ticket_type
-            txtTicketSvc.text = details.ticket[0].service
+            txtTicketCliente?.text = details.ticket[0].client_reason
+            txtTicketTrabajo?.text = details.ticket[0].ticket_type
+            txtTicketSvc?.text = details.ticket[0].service
             if(details.ticket[0].order_required.equals("1"))
-                txtTicketReq.text = "Sí"
+                txtTicketReq?.text = "Sí"
             else
-                txtTicketReq.text = "No"
+                txtTicketReq?.text = "No"
             if(details.ticket[0].order_completed.equals("1"))
-                txtTicketCompletado.text = "Sí"
+                txtTicketCompletado?.text = "Sí"
             else
-                txtTicketCompletado.text = "No"
+                txtTicketCompletado?.text = "No"
 
 
             val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -105,14 +178,14 @@ class OrdersActivity : AppCompatActivity() {
             val fmtHora = SimpleDateFormat("HH:mm")
             //val fechaProgramada:String = fmtDia.format(parser.parse(details.ticket[0].programming_date))
             //val horaProgramada:String = fmtHora.format(parser.parse(details.ticket[0].programming_date))
-            txtTicketFecha.text = details.ticket[0].programming_date.split(" ")[0]
-            txtTicketHora.text = details.ticket[0].programming_date.split(" ")[1]
+            txtTicketFecha?.text = details.ticket[0].programming_date.split(" ")[0]
+            txtTicketHora?.text = details.ticket[0].programming_date.split(" ")[1]
 
-            txtTicketDireccion.text = details.ticket[0].ticket_address_all
+            txtTicketDireccion?.text = details.ticket[0].ticket_address_all
 
-            txtProgreso.text = details.ticket[0].ticket_progress_complete
-            txtHoraInicio.text = details.ticket[0].ticket_start_date_formatted
-            txtHoraFin.text = details.ticket[0].ticket_end_date_formatted
+            txtProgreso?.text = details.ticket[0].ticket_progress_complete
+            txtHoraInicio?.text = details.ticket[0].ticket_start_date_formatted
+            txtHoraFin?.text = details.ticket[0].ticket_end_date_formatted
 
 
         }
@@ -123,7 +196,23 @@ class OrdersActivity : AppCompatActivity() {
 
 
 
+    fun ticketCompleted(ticketId:String,user_id:String,comment:String,task:String,token: String,date:String){
+        ordersViewModel.ticketCompletedObserver().observe(this){ticket->
+            if (ticket.contains("Exito")){
+                Toast.makeText(applicationContext,"Ticket cerrado exitosamente",Toast.LENGTH_LONG).show()
+                val intent = Intent(
+                    this@OrdersActivity,
+                    ERPPrincipalActivity::class.java
+                )
+                startActivity(intent)
+            }
+        }
+        ordersViewModel.ticketCompleted(ticketId, user_id, comment, task, token,date)
+    }
+
+
     fun getOrderList(ticket_id:String,task:String,token: String){
+
         ordersViewModel.getOrdersResultObserver().observe(this) { orders ->
 
             if(orders.order.isNotEmpty()){
@@ -179,6 +268,11 @@ class OrdersActivity : AppCompatActivity() {
                         order_color
                     )
                     ordersList.add(orden)
+
+                    if(o.progress.equals("O")){
+                        totalOrdersNoCompletadas++
+                    }
+
                 }
 
                 adapter = OrdersAdapter(ordersList)
@@ -209,5 +303,25 @@ class OrdersActivity : AppCompatActivity() {
         ticketsProvViewModel.getTicketProvisioning(user_id, task, token)
 
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_transaccional_1, menu)
+
+        // return true so that the menu pop up is opened
+        return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean
+    {
+        if (item.itemId == R.id.action_back) {
+            onBackPressed()
+        }
+        return true
+    }
+
 
 }

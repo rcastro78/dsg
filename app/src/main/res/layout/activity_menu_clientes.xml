@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuPrincipalActivity"
+    android:weightSum="100"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="75">
+
+        <ImageView
+            android:id="@+id/imgDSG"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/dsg"></ImageView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="25"
+
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btnCrearCliente"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#3d85c6"
+            android:drawableLeft="@drawable/clientes"
+            android:drawablePadding="16dp"
+            android:text="Crear cliente prospecto"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnFollowClientes"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_below="@id/btnCrearCliente"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#3d85c6"
+            android:drawableLeft="@drawable/clientes"
+            android:text="Seguimiento de clientes"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_below="@id/btnFollowClientes"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#3d85c6"
+            android:drawableLeft="@drawable/clientes"
+            android:text="Menú Principal"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+</LinearLayout>

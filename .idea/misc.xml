@@ -3,8 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/button_border_gray.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable-v24/button_border_red.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/bg_cuadros_texto2.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/boton_redondeado.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/boton_redondeado_3.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/boton_redondeado_4.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/button_border_cyan.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/button_border_gray.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/button_border_green.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/button_border_pink.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/button_border_red.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/circular_background.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/trabajo_border_1.xml" value="0.176" />
+        <entry key="app/src/main/res/layout/activity_auth_ticket_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_autorizaciones.xml" value="0.125390625" />
+        <entry key="app/src/main/res/layout/activity_crear_cliente_pr1.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_crear_cliente_pr2.xml" value="0.2824561403508772" />
+        <entry key="app/src/main/res/layout/activity_crear_cliente_pr3.xml" value="0.2824561403508772" />
+        <entry key="app/src/main/res/layout/activity_follow_prospect.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_hoja_ctrl.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_materiales_dialog.xml" value="0.13359375" />
+        <entry key="app/src/main/res/layout/activity_menu_autorizacion.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_menu_clientes.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_menu_principal.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_no_cerrados.xml" value="0.125390625" />
         <entry key="app/src/main/res/layout/activity_orden_detalle_articulo.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_orden_firma.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_orden_materiales.xml" value="0.16" />
@@ -12,23 +36,35 @@
         <entry key="app/src/main/res/layout/activity_orden_ubicacion.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_orders.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_orders2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_orders2a.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_orders3.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_principal.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_programaciones.xml" value="0.125390625" />
         <entry key="app/src/main/res/layout/activity_prov_articulos.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_prov_materiales.xml" value="0.34649122807017546" />
+        <entry key="app/src/main/res/layout/activity_registrar_cobro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_tickets.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_tipo_instalacion.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/bottom_view_add_factura.xml" value="0.21" />
         <entry key="app/src/main/res/layout/circular_background.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/layout/dialog_comment.xml" value="0.13984375" />
         <entry key="app/src/main/res/layout/item_articulo_orden.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_autorizaciones.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_detail_order_article.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/layout/item_factura.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_orden_materiales.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/item_order_2.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_prov_articulos.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_prov_material.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_solicitud.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_spinner.xml" value="0.141796875" />
         <entry key="app/src/main/res/layout/item_ticket.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_ticket_auth.xml" value="0.42625368731563423" />
         <entry key="app/src/main/res/layout/tool_bar.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/menu/menu_desplegable.xml" value="0.121484375" />
+        <entry key="app/src/main/res/menu/menu_transaccional_1.xml" value="0.121484375" />
+        <entry key="app/src/main/res/menu/menu_transaccional_2.xml" value="0.13728070175438598" />
       </map>
     </option>
   </component>

@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -15,17 +17,23 @@ import kotlinx.android.synthetic.main.activity_orden_firma.*
 import kotlinx.android.synthetic.main.activity_orden_ubicacion.*
 import sv.com.seguridadcontrol.app.R
 import sv.com.seguridadcontrol.app.viewmodel.OrderClientViewModel
+import sv.com.seguridadcontrol.app.viewmodel.OrderUbicacionViewModel
+import java.io.ByteArrayOutputStream
 
 class OrdenFirmaActivity : AppCompatActivity() {
     private lateinit var orderClienteViewModel : OrderClientViewModel
+    private lateinit var orderUbicacionViewModel : OrderUbicacionViewModel
     private var sharedPreferences: SharedPreferences? = null
+    var orderNum:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orden_firma)
         val SHARED:String=getString(R.string.sharedpref)
         sharedPreferences = getSharedPreferences(SHARED, 0)
+        orderUbicacionViewModel= ViewModelProvider(this).get(OrderUbicacionViewModel::class.java)
         val token:String? = sharedPreferences!!.getString("token","")
         val orderId:String? = intent.getStringExtra("orderId")
+        orderNum = intent.getStringExtra("orderNum")!!
         orderClienteViewModel = ViewModelProvider(this).get(OrderClientViewModel::class.java)
         val tfBold = Typeface.createFromAsset(assets,"fonts/Nunito-Bold.ttf")
         val tf = Typeface.createFromAsset(assets,"fonts/Nunito-Regular.ttf")
@@ -45,13 +53,19 @@ class OrdenFirmaActivity : AppCompatActivity() {
         }
         btnGuardaFirma.setOnClickListener {
             fdvFirma.getDrawScreenshot(object : FreeDrawView.DrawCreatorListener {
-                override fun onDrawCreated(draw: Bitmap?) {
-                    var bitmap: Bitmap? = draw
+                override fun onDrawCreated(b: Bitmap) {
+                    //saveImage(b,"$orderId-$ticketId-ubicacion")
+                    val bos = ByteArrayOutputStream()
+                    b.compress(Bitmap.CompressFormat.JPEG,90,bos)
+                    val byteArray = bos.toByteArray()
+                    val img = Base64.encodeToString(byteArray, Base64.DEFAULT)
+                    storeImage(img,"F",orderId!!,"orders_stored_img",token!!)
 
                 }
 
                 override fun onDrawCreationError() {
-                    TODO("Not yet implemented")
+                    // Something went wrong creating the bitmap, should never
+                    // happen unless the async task has been canceled
                 }
 
             })
@@ -64,6 +78,34 @@ class OrdenFirmaActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+
+    private fun storeImage(img:String,imgType:String,orderId:String,task:String,token:String){
+        orderUbicacionViewModel.storeUbicacionObserver().observe(this) { result ->
+
+            Log.d("UBICACIONRES",result)
+
+            if (result.contains("Exito")) {
+                Toast.makeText(
+                    applicationContext,
+                    "Ubicación guardada correctamente",
+                    Toast.LENGTH_LONG
+                ).show()
+                val intent = Intent(this@OrdenFirmaActivity, OrdenTrabajoActivity::class.java)
+                intent.putExtra("orderId", orderId)
+                intent.putExtra("orderNum", orderNum)
+                intent.putExtra("ubicacion", 1)
+                val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                editor.putInt("ubicacion", 1)
+                editor.apply()
+                startActivity(intent)
+
+            }
+        }
+        orderUbicacionViewModel.storeUbicacionImage(img,imgType,orderId,task,token)
+
+
     }
 
 

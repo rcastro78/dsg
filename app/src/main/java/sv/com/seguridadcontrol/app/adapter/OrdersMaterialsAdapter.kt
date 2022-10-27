@@ -1,16 +1,27 @@
 package sv.com.seguridadcontrol.app.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.DisposableHandle
+import kotlinx.coroutines.launch
 import sv.com.seguridadcontrol.app.R
+import sv.com.seguridadcontrol.app.dao.AppDatabase
+import sv.com.seguridadcontrol.app.erp.tecnicos.OrdenMaterialesActivity
 import sv.com.seguridadcontrol.app.modelos.OrderMaterials
 
-class OrdersMaterialsAdapter (var lstMateriales:ArrayList<OrderMaterials>):
+class OrdersMaterialsAdapter (var lstMateriales:ArrayList<OrderMaterials>,var orderId:String,var c:Context):
     RecyclerView.Adapter<OrdersMaterialsAdapter.ViewHolder>(){
+    private lateinit var db: AppDatabase
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //var nomVehicle : TextView = view.findViewById(R.id.lbl_nombre_vehiculo)
         //val nomMake : TextView = view.findViewById(R.id.lbl_make_vehicle)
@@ -18,7 +29,7 @@ class OrdersMaterialsAdapter (var lstMateriales:ArrayList<OrderMaterials>):
         val txtOrdenMaterial  : TextView = view.findViewById(R.id.txtOrdenMaterial)
         val txtOrdenMaterialCantidad  : TextView = view.findViewById(R.id.txtOrdenMaterialCantidad)
         val txtOrdenMaterialUnidad  : TextView = view.findViewById(R.id.txtOrdenMaterialUnidad)
-
+        val imbDelete:ImageView  = view.findViewById(R.id.imbDelete)
 
 
     }
@@ -30,13 +41,6 @@ class OrdersMaterialsAdapter (var lstMateriales:ArrayList<OrderMaterials>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val m = lstMateriales[position]
-        /*Glide.with(holder.imgBeast.getContext()).load(c.pkImage)
-                .placeholder(R.drawable.pokeball01)
-                .error(R.drawable.pokeball01)
-                .circleCrop()
-                .into(holder.imgBeast)*/
-        //holder.nomVehicle.text=v.vendor_vehicle_model
-        //holder.nomMake.text=v.vendor_vehicle_make
         val tf = Typeface.createFromAsset(holder.txtOrdenMaterialUnidad.context.getAssets(),"fonts/Nunito-Regular.ttf")
 
 
@@ -48,10 +52,15 @@ class OrdersMaterialsAdapter (var lstMateriales:ArrayList<OrderMaterials>):
         holder.txtOrdenMaterialCantidad.typeface = tf
         holder.txtOrdenMaterialUnidad.typeface = tf
 
-
-
-
-
+        holder.imbDelete.setOnClickListener {
+            db = AppDatabase.getInstance(c)
+            CoroutineScope(Dispatchers.IO).launch {
+                db.iMaterialesDAO.delete(orderId,m.materials_id)
+            }
+            //eliminar item de una lista
+            lstMateriales.removeAt(position)
+            notifyItemRemoved(position)
+       }
     }
 
     override fun getItemCount(): Int {

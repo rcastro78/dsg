@@ -21,65 +21,7 @@ android:orientation="vertical"
     android:layout_below="@id/tool_bar"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="3"
-        android:orientation="vertical"
-        android:padding="12dp"
-        android:layout_weight="65">
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Spinner
-                android:id="@+id/sprMateriales"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"></Spinner>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <EditText
-                android:id="@+id/txtCantidadMaterial"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:background="#fff"
-                android:hint="0"
-                android:paddingLeft="6dp"></EditText>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/btnGuardarMateriales"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="64dp"
-                android:background="@color/colorAccent"
-                android:text="Guardar"
-                android:textAllCaps="false"
-                android:textColor="#fff"></Button>
-
-
-
-        </RelativeLayout>
-
-    </LinearLayout>
 
 
     <LinearLayout
@@ -102,7 +44,7 @@ android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:weightSum="3"
+                android:weightSum="4"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
 
@@ -153,11 +95,27 @@ android:orientation="vertical"
                         android:layout_centerInParent="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="U. de medida"
+                        android:textSize="10dp"
                         android:textColor="#fff"></TextView>
 
 
                 </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
+                    <TextView
+                        android:id="@+id/lblOpc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Eliminar"
+                        android:textColor="#fff"></TextView>
+
+
+                </RelativeLayout>
             </LinearLayout>
 
 
@@ -173,16 +131,39 @@ android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rvMaterialOrden"
-                android:layout_weight="15"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_weight="10"></androidx.recyclerview.widget.RecyclerView>
 
-          <Button android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_marginLeft="24dp"
-              android:layout_marginRight="24dp"
-              android:textAllCaps="false"
-              android:text="Procesar materiales"
-             android:id="@+id/btnProcesarMateriales"
-              android:layout_weight="85"></Button>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:weightSum="100">
+
+                <Button android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:textAllCaps="false"
+                    android:text="Procesar materiales"
+                    android:id="@+id/btnProcesarMateriales"
+
+                    android:layout_weight="50"></Button>
+
+                <Button android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:textAllCaps="false"
+                    android:text="Agregar materiales"
+
+                    android:id="@+id/btnAgregarMateriales"
+
+                    android:layout_weight="50"></Button>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </LinearLayout>

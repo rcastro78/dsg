@@ -7,7 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".DSGApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,26 +18,54 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DSG2">
         <activity
+            android:name=".erp.clientes.FollowProspectActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".erp.cobros.RegistrarCobroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".erp.autorizaciones.NoCerradosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".erp.autorizaciones.ProgramacionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".erp.autorizaciones.AutorizacionesActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".erp.autorizaciones.MenuAutorizacionActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"/>
+        <activity
             android:name=".erp.tecnicos.OrdenUbicacionActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.TipoInstalacionActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.Orders2Activity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.OrdenFirmaActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.OrdenTrabajoActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.OrdenDetalleArticuloActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".erp.tecnicos.OrdenMaterialesActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".erp.tecnicos.ProvArticulosActivity"
             android:exported="true"
@@ -45,11 +75,34 @@
             android:exported="true"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".erp.tecnicos.OrdersActivity"
+            android:name=".erp.autorizaciones.AuthTicketDetailActivity"
             android:exported="true"
             android:launchMode="singleInstance" />
         <activity
+            android:name=".erp.tecnicos.OrdersActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+
+
+
+        <activity
             android:name=".erp.tecnicos.HojaCtrlActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.clientes.MenuClientesActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.clientes.CrearClientePr2Activity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.clientes.CrearClientePr3Activity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".erp.clientes.CrearClientePr1Activity"
             android:exported="true"
             android:launchMode="singleInstance" />
         <activity
@@ -65,8 +118,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".erp.tecnicos.TicketsHoyActivity" />
-        <activity android:name=".MenuPrincipalActivity" />
+        <activity android:name=".erp.tecnicos.TicketsHoyActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".MenuPrincipalActivity" android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

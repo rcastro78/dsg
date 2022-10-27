@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -26,13 +27,17 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
         }
 
-
-
-
-
         setContentView(R.layout.activity_main)
         val SHARED:String=getString(R.string.sharedpref)
         sharedPreferences = getSharedPreferences(SHARED, 0)
+
+        val auth:Int = sharedPreferences!!.getInt("auth",0)
+        if(auth==1){
+            val intent = Intent(this@MainActivity, MenuPrincipalActivity::class.java)
+            startActivity(intent)
+        }
+
+
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         userName = sharedPreferences?.getString("userName","")!!
         userPwd = sharedPreferences?.getString("userPwd","")!!
@@ -68,9 +73,9 @@ class MainActivity : AppCompatActivity() {
                 editor.putString("ticketTypeId", usuario.login[0].ticket_type_id)
                 editor.putString("userType", usuario.login[0].userType)
                 editor.putString("idUserType", usuario.login[0].id_user_type)
-
+                editor.putInt("auth", 1)
                 editor.apply()
-
+                Log.d("USER_TYPE",usuario.login[0].id_user_type)
                 val intent = Intent(this@MainActivity, MenuPrincipalActivity::class.java)
                 startActivity(intent)
             } else {
@@ -83,3 +88,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+/*
+*
+*
+*
+*
+* btnIniciarOrden.setOnClickListener{
+            val intent = Intent(this@Orders2Activity, OrdenTrabajoActivity::class.java)
+            intent.putExtra("orderId",getIntent().getStringExtra("orderId"))
+            intent.putExtra("orderNum",getIntent().getStringExtra("orderNum"))
+
+            startActivity(intent)
+        }
+* */

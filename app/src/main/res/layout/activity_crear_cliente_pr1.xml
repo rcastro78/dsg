@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".erp.clientes.CrearClientePr1Activity">
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"></include>
+
+
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Datos Personales"
+        android:id="@+id/lblDatosPersonales"
+        android:textSize="24dp"
+        android:layout_margin="6dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Nombre" />
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtApellido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Apellido" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtNombreComercial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Nombre Comercial" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtGiroComercial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Giro Comercial" />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <Spinner
+                android:id="@+id/sprPais"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Giro Comercial" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <Spinner
+                android:id="@+id/sprDepartamento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <Spinner
+                android:id="@+id/sprAdvisers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Giro Comercial" />
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Info de Contacto"
+        android:id="@+id/lblInfo"
+        android:textSize="24dp"
+        android:layout_margin="6dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtTelef"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="8"
+                android:gravity="center_vertical"
+                android:hint="Número de teléfono" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtNumeroMovil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:inputType="number"
+                    android:maxLength="8"
+                android:gravity="center_vertical"
+                android:hint="Número Móvil" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:weightSum="100">
+
+
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:inputType="textEmailAddress"
+
+                android:gravity="center_vertical"
+                android:hint="Email" />
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rlClientePr2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/button_border_green"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/txtSiguienteCliente1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Siguiente"
+            android:textColor="#fff"
+            android:textSize="16dp"></TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>

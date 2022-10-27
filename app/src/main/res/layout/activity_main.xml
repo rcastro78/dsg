@@ -8,20 +8,29 @@
     android:orientation="vertical"
     android:weightSum="100">
 
-   <LinearLayout
+   <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:layout_weight="80"></LinearLayout>
+       android:layout_weight="80"
+       android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="20">
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:layout_margin="24dp"
+           android:src="@drawable/dsg"/>
+
+
+   </RelativeLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="20">
 
           <LinearLayout
               android:layout_width="match_parent"
@@ -54,9 +63,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/bg_cuadros_texto2"
                     android:hint="Usuario"
+                    android:paddingLeft="12dp"
                     android:id="@+id/txtUsuario"
+
                     android:textColorHint="#D2D2D2"></EditText>
 
 
@@ -79,9 +90,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#fff"
+                        android:background="@drawable/bg_cuadros_texto2"
                         android:hint="Password"
                         android:id="@+id/txtClave"
+                        android:paddingLeft="12dp"
                         android:inputType="textPassword"
                         android:textColorHint="#D2D2D2"></EditText>
 
@@ -94,16 +106,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
                 android:weightSum="100">
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="42dp"
                     android:layout_marginLeft="24dp"
                     android:layout_marginRight="24dp"
+                    android:layout_marginTop="32dp"
                     android:text="Iniciar Sesión"
                     android:textAllCaps="false"
+                    app:backgroundTint="@null"
                     android:id="@+id/btnLogin"
+                    android:background="@drawable/boton_redondeado"
                     android:textColor="#fff">
 
                 </Button>
@@ -114,6 +129,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+
 
 </LinearLayout>

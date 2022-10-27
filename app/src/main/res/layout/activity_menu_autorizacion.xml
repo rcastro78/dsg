@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    tools:context=".erp.autorizaciones.MenuAutorizacionActivity">
+
+
+    <RelativeLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="75">
+
+        <ImageView
+            android:id="@+id/imgDSG"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/dsg"></ImageView>
+
+    </RelativeLayout>
+
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="25"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:clickable="true"
+            android:weightSum="100"
+            android:id="@+id/llAutorizacion"
+            android:padding="8dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="75">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/instalaciones"></ImageView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="25">
+
+                <TextView
+                    android:id="@+id/lblAutorizaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="Autorizaciones"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:clickable="true"
+            android:weightSum="100"
+            android:id="@+id/llHorasExtra"
+            android:padding="8dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="75">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/hora_extra"></ImageView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="25">
+
+                <TextView
+                    android:id="@+id/lblHExtra"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="Horas Extra"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:clickable="true"
+            android:weightSum="100"
+            android:id="@+id/llNoCerrados"
+            android:padding="8dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="75">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stopwatch"></ImageView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="25">
+
+                <TextView
+                    android:id="@+id/lblNoCerrados"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="No Cerrados"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

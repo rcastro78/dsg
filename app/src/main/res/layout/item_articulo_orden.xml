@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
-    android:weightSum="100">
+    android:layout_height="120dp"
+    android:weightSum="100"
+    android:layout_margin="6dp"
+    android:background="#F0F0F0">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,12 +24,12 @@
         android:layout_height="match_parent"
         android:layout_weight="20"
         android:orientation="vertical"
-        android:weightSum="2">
+        android:weightSum="100">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="35">
 
             <TextView
                 android:id="@+id/txtProduct"
@@ -35,19 +37,22 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="Product"
+                android:textSize="12dp"
                 android:textColor="#000"></TextView>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="65">
+
             <TextView
                 android:id="@+id/txtCategory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="category"
+                android:textSize="10dp"
                 android:textColor="#000"></TextView>
         </RelativeLayout>
 

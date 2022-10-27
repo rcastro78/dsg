@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".erp.clientes.CrearClientePr1Activity">
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"></include>
+
+
+    <TextView
+        android:id="@+id/lblTermCond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:text="Términos y Condiciones"
+        android:textSize="24dp" />
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reacción propia y sin costo a nivel nacional"
+        android:id="@+id/chkReaccion"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Equipo gps propiedad del cliente"
+        android:id="@+id/chkEquipo"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Revisiones y traslados sin costo"
+        android:id="@+id/chkRevs"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se debe firmar contrato por 18 meses"
+        android:id="@+id/chkFirmaContrato"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precios no incluyen IVA"
+        android:id="@+id/chkNoIVA"/>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rlFinalizar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/button_border_green"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/txtSiguienteCliente2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Finalizar y Guardar"
+            android:textColor="#fff"
+            android:textSize="16dp"></TextView>
+
+    </RelativeLayout>
+</LinearLayout>

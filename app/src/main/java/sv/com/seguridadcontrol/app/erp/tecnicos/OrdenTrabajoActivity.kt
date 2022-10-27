@@ -9,6 +9,8 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -72,6 +74,7 @@ class OrdenTrabajoActivity : AppCompatActivity() {
                 intent.putExtra("orderNum", orderNum)
                 intent.putExtra("orderId", orderId)
                 startActivity(intent)
+                finish()
             //}else{
             //    Toast.makeText(applicationContext,"Los materiales ya fueron enviados",Toast.LENGTH_LONG).show()
             //}
@@ -82,7 +85,9 @@ class OrdenTrabajoActivity : AppCompatActivity() {
             if(!hasSignature) {
                 val intent = Intent(this@OrdenTrabajoActivity, OrdenFirmaActivity::class.java)
                 intent.putExtra("orderId", orderId)
+                intent.putExtra("orderNum", orderNum)
                 startActivity(intent)
+                finish()
             }else
             {
                 Toast.makeText(applicationContext,"La firma ya fue enviada",Toast.LENGTH_LONG).show()
@@ -95,6 +100,7 @@ class OrdenTrabajoActivity : AppCompatActivity() {
                 intent.putExtra("orderId", orderId)
                 intent.putExtra("orderNum", orderNum)
                 startActivity(intent)
+            finish()
             /*}else{
                 Toast.makeText(applicationContext,"La imagen ya fue enviada",Toast.LENGTH_LONG).show()
             }*/
@@ -105,8 +111,9 @@ class OrdenTrabajoActivity : AppCompatActivity() {
                 intent.putExtra("orderId", orderId)
                 intent.putExtra("orderNum", orderNum)
                 startActivity(intent)
+                finish()
             }else{
-                Toast.makeText(applicationContext,"Los materiales ya fueron enviados",Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext,"Los materiales ya fueron enviados",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -137,12 +144,15 @@ class OrdenTrabajoActivity : AppCompatActivity() {
                 if (result.equals("Exito")) {
                     Toast.makeText(applicationContext, "Comentario enviado", Toast.LENGTH_LONG)
                         .show()
+                    btnFinalizarOrden.text="Orden Finalizada"
+                    btnFinalizarOrden.isEnabled = false
                 } else {
                     Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_LONG).show()
                 }
+                dialog.dismiss()
             }
             val c = Calendar.getInstance().time
-            val df = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
+            val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
             val fecha = df.format(c)
             orderVerificationVieModel.storeComment(order_id,user_id,comentario,fecha,"orders_stored_comment_offline",token)
 
@@ -193,11 +203,37 @@ class OrdenTrabajoActivity : AppCompatActivity() {
             }
 
 
+            /*if(hasInstall && hasImage && hasSignature && hasMaterials){
+                btnFinalizarOrden.text="Orden Finalizada"
+                btnFinalizarOrden.isEnabled = false
+            }*/
+
+
 
         }
         orderVerificationVieModel.getOrderVerificationDetail(order_id,user_id, task, token)
     }
 
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_transaccional_1, menu)
+
+        // return true so that the menu pop up is opened
+        return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean
+    {
+        if (item.itemId == R.id.action_back) {
+            onBackPressed()
+        }
+        return true
+    }
 
 
 }

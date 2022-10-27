@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="50"
-        android:weightSum="3">
+        android:weightSum="4">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -78,7 +78,24 @@
                 android:layout_height="1dp"
                 android:background="@color/purple_700"></View>
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
+            <ImageView
+                android:id="@+id/imbDelete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:src="@drawable/remove" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/purple_700"></View>
+        </RelativeLayout>
     </LinearLayout>
 <!--
     <LinearLayout

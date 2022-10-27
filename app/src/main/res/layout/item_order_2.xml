@@ -49,8 +49,9 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
-            android:gravity="center_vertical"
-            android:text="Código de la orden"></TextView>
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Código de la orden"
+            android:textSize="24dp"></TextView>
 
     </RelativeLayout>
     </LinearLayout>
@@ -88,13 +89,13 @@
                 android:id="@+id/btnOrderDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_centerInParent="true"
+                android:backgroundTint="#3d85c6"
+                android:text="Detalle"
                 android:textAllCaps="false"
-                android:textColor="#fff"
-                android:backgroundTint="#303030"
-                android:text="Detalle"></Button>
+                android:textColor="#fff"></Button>
 
 
         </RelativeLayout>
