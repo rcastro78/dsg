@@ -19,6 +19,8 @@ import com.rm.freedrawview.FreeDrawView.DrawCreatorListener
 import android.os.Environment
 import android.util.Base64
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import okhttp3.MediaType
 import sv.com.seguridadcontrol.app.viewmodel.OrderUbicacionViewModel
@@ -120,7 +122,7 @@ class OrdenUbicacionActivity : AppCompatActivity() {
 
             Log.d("UBICACIONRES",result)
 
-            if (result.contains("Exito.")) {
+            if (result.contains("Exito")) {
                 Toast.makeText(
                     applicationContext,
                     "Ubicación guardada correctamente",
@@ -165,5 +167,21 @@ class OrdenUbicacionActivity : AppCompatActivity() {
         }
     }
 */
+override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    val inflater = menuInflater
+    inflater.inflate(R.menu.menu_transaccional_1, menu)
 
+    // return true so that the menu pop up is opened
+    return true
+}
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean
+    {
+        if (item.itemId == R.id.action_back) {
+            onBackPressed()
+        }
+        return true
+    }
 }

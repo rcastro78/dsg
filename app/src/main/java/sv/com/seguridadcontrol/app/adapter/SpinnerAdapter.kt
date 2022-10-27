@@ -17,7 +17,6 @@ class SpinnerAdapter(activity: Activity, items: ArrayList<OrderMaterials>?) : Ba
     var items: ArrayList<OrderMaterials>? = null
     var item: OrderMaterials? = null
     val holder = ViewHolder()
-    val TAG = "AlumnosAdapter"
     var tf: Typeface? = null
     var tfBold:Typeface? = null
 

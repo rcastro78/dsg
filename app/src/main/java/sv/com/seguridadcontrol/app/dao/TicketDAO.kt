@@ -14,7 +14,8 @@ class TicketDAO{
         fun getTickets(): List<TicketData>
         @Insert(onConflict=OnConflictStrategy.REPLACE)
         fun insert(ticket:TicketData)
-
+        @Query("DELETE FROM $TABLE_NAME")
+        fun delete()
 
     }
 }

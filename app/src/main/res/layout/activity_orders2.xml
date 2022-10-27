@@ -8,15 +8,6 @@
     android:orientation="vertical">
 
 
-    <include android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"></include>
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/tool_bar">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -634,70 +625,54 @@
 
 
     </RelativeLayout>
-        <TextView
-            android:id="@+id/lblDeta"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:background="#4EA198"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="Artículos"
-            android:textColor="#fff"></TextView>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            >
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rvArticulosUnidades"
-            />
-        </RelativeLayout>
+
 
 
     </LinearLayout>
-</ScrollView>
 
-    <LinearLayout
-        android:layout_width="180dp"
-        android:layout_height="48dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:weightSum="100">
+    <!--
+       <LinearLayout
+           android:layout_width="180dp"
+           android:layout_height="48dp"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentBottom="true"
+           android:layout_margin="16dp"
+           android:layout_marginStart="12dp"
+           android:layout_marginTop="12dp"
+           android:layout_marginEnd="12dp"
+           android:layout_marginBottom="12dp"
+           id:weightSum="100">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="75">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="75">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/finish_flag"></ImageView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/finish_flag"></ImageView>
+               </RelativeLayout>
 
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="25">
 
-            <Button
-                android:id="@+id/btnIniciarOrden"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#fff"
-                android:text="Iniciar Orden"
-                android:textAllCaps="false"
-                android:textColor="#000"></Button>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="25">
 
-        </RelativeLayout>
+                    <Button
+                        android:id="@+id/btnIniciarOrden"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#fff"
+                        android:text="Iniciar Orden"
+                        android:textAllCaps="false"
+                        android:textColor="#000"></Button>
 
-    </LinearLayout>
+                </RelativeLayout>
+
+    </LinearLayout>-->
 
 
 </RelativeLayout>

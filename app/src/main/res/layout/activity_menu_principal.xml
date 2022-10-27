@@ -14,11 +14,22 @@
         android:layout_weight="75">
 
         <ImageView
+            android:id="@+id/imgDSG"
             android:layout_width="132dp"
             android:layout_height="132dp"
-            android:background="@drawable/dsg"
-            android:id="@+id/imgDSG"
-            android:layout_centerInParent="true"></ImageView>
+            android:layout_centerInParent="true"
+            android:background="@drawable/dsg"></ImageView>
+
+
+        <ImageButton android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="6dp"
+            android:id="@+id/imbLogout"
+            android:background="@drawable/logout"/>
+
 
 
     </RelativeLayout>
@@ -28,7 +39,7 @@
         android:layout_weight="25"
         android:weightSum="2"
         android:orientation="vertical"
-        android:background="#D2D2D2">
+       >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +57,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/erp"></ImageButton>
+                    android:background="@drawable/tecnicos"></ImageButton>
 
 
             </RelativeLayout>
@@ -56,11 +67,11 @@
                 android:layout_weight="1">
 
                 <ImageButton
-                    android:id="@+id/imbAlarm"
+                    android:id="@+id/imbDownload"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/alarm"></ImageButton>
+                    android:background="@drawable/descarga"></ImageButton>
 
             </RelativeLayout>
 
@@ -70,12 +81,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:weightSum="2">
+            android:weightSum="3">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
+                <ImageButton
+                    android:id="@+id/imbCobros"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/dinero"></ImageButton>
 
 
             </RelativeLayout>
@@ -86,11 +103,26 @@
                 android:layout_weight="1">
 
                 <ImageButton
-                    android:id="@+id/imbLogout"
-                    android:layout_width="24dp"
-                    android:layout_height="32dp"
+                    android:id="@+id/imbAutorizaciones"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/logout"></ImageButton>
+                    android:background="@drawable/auth"></ImageButton>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/imbClientes"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/clientes"></ImageButton>
+
 
             </RelativeLayout>
         </LinearLayout>

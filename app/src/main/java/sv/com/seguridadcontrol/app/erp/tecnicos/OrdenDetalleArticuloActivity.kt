@@ -44,18 +44,19 @@ class OrdenDetalleArticuloActivity : AppCompatActivity() {
     }
 
     fun getDetailArticle(order_num:String, task:String, token:String){
-        orderDetailArticleViewModel.getOrderDetailArticlesObserver().observe(this,{res->
-            res.unit.forEach { r->
-                Log.d("ARTICLE","${r.article}")
-                if(r.article != null) {
+        orderDetailArticleViewModel.getOrderDetailArticlesObserver().observe(this) { res ->
+            res.unit.forEach { r ->
+                Log.d("ARTICLE", "${r.article}")
+                if (r.article != null) {
                     val unit = Unit(
                         r.article, r.category, r.id_article, "",
                         "", r.product, "r.unit", "",
-                        "", "")
+                        "", ""
+                    )
 
                     lstMateriales.add(unit)
-                }else{
-                    lblArticuloUnidad.text = "Unidad: "+r.unit
+                } else {
+                    lblArticuloUnidad.text = "Unidad: " + r.unit
                     llUnidad.setBackgroundColor(Color.parseColor(r.order_color))
                 }
 
@@ -66,7 +67,7 @@ class OrdenDetalleArticuloActivity : AppCompatActivity() {
             rvArticulosOrden.adapter = adapter
 
             /**/
-        })
+        }
 
         orderDetailArticleViewModel.getOrderDetailArticles(order_num, task, token)
     }

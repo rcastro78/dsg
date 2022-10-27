@@ -42,9 +42,9 @@ class ProvMaterialesActivity : AppCompatActivity() {
     }
 
     fun getProvisioningMaterials(user_id:String,task:String,token:String){
-        ordersProvViewModel.getOrderProvisioningResultObserver().observe(this,{op->
-            op.material.forEach({m ->
-               val p = ProvisionamientoMateriales(m.product,m.brand,m.quantity,m.unity)
+        ordersProvViewModel.getOrderProvisioningResultObserver().observe(this) { op ->
+            op.material.forEach({ m ->
+                val p = ProvisionamientoMateriales(m.product, m.brand, m.quantity, m.unity)
                 provisionamiento.add(p)
             })
 
@@ -56,8 +56,7 @@ class ProvMaterialesActivity : AppCompatActivity() {
             }
 
 
-
-        })
+        }
 
         ordersProvViewModel.getOrdersProvisioningMaterials(user_id, task, token)
 

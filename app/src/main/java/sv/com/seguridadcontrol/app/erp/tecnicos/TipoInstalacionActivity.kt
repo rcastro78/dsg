@@ -6,6 +6,8 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -123,22 +125,22 @@ class TipoInstalacionActivity : AppCompatActivity() {
 
     fun guardarInstalacion(order_id:String,type:String,facility:String,
                            turn:String,battery:String,task:String,token:String){
-        orderVerificationVieModel.storeFacilitiesObserver().observe(this,{storeResult->
-            Toast.makeText(applicationContext,storeResult,Toast.LENGTH_LONG).show()
+        orderVerificationVieModel.storeFacilitiesObserver().observe(this) { storeResult ->
+            Toast.makeText(applicationContext, storeResult, Toast.LENGTH_LONG).show()
             val intent = Intent(this@TipoInstalacionActivity, OrdenTrabajoActivity::class.java)
 
-            intent.putExtra("orderId",orderId)
-            intent.putExtra("orderNum",orderNum)
+            intent.putExtra("orderId", orderId)
+            intent.putExtra("orderNum", orderNum)
             startActivity(intent)
-        })
+        }
         orderVerificationVieModel.storeOrderFacilities(order_id, type, facility, turn, battery, task, token)
     }
 
 
 
     fun getOrderVerificationDetails(order_id:String,user_id:String,task:String,token:String){
-        orderVerificationVieModel.getOrderVerificationObserver().observe(this,{st->
-            if(st != null) {
+        orderVerificationVieModel.getOrderVerificationObserver().observe(this) { st ->
+            if (st != null) {
                 val fac = st.status[0].facility
                 if (fac.contains("|")) {
                     var div = fac.split("|")
@@ -173,9 +175,25 @@ class TipoInstalacionActivity : AppCompatActivity() {
 
                 }
             }
-        })
+        }
         orderVerificationVieModel.getOrderVerificationDetail(order_id,user_id, task, token)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_transaccional_1, menu)
 
+        // return true so that the menu pop up is opened
+        return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean
+    {
+        if (item.itemId == R.id.action_back) {
+            onBackPressed()
+        }
+        return true
+    }
 }

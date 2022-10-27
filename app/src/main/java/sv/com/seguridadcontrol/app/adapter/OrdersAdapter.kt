@@ -21,6 +21,7 @@ class OrdersAdapter(private var ordersList:ArrayList<Orden>):
         val btnOrderDetails : Button = view.findViewById(R.id.btnOrderDetails)
         val txtCodigoOrden  : TextView = view.findViewById(R.id.txtCodigoOrden)
         val txtOrderNum2  : CircularTextView = view.findViewById(R.id.txtOrderNum2)
+        val llBackground:LinearLayout = view.findViewById(R.id.llBackgroud)
 
 
     }
@@ -49,6 +50,17 @@ class OrdersAdapter(private var ordersList:ArrayList<Orden>):
         holder.txtOrderNum2.setStrokeWidth(1)
         holder.txtOrderNum2.setStrokeColor(o.order_color)
         holder.txtOrderNum2.setSolidColor("#FFFFFF")
+
+
+        if(o.progress.equals("A")){
+            holder.txtOrderNum2.setBackgroundColor(Color.parseColor("#ec470c"))
+        }
+        if(o.progress.equals("O")){
+            holder.txtOrderNum2.setBackgroundColor(Color.parseColor("#9fc5e8"))
+        }
+        if(o.progress.equals("C")){
+            holder.txtOrderNum2.setBackgroundColor(Color.parseColor("#3dc67d"))
+        }
 
 
         holder.txtCodigoOrden.typeface = tf

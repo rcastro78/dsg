@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".erp.clientes.CrearClientePr1Activity">
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"></include>
+
+
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Posibles Servicios"
+            android:id="@+id/lblPosiblesSvc"
+            android:textSize="24dp"
+            android:layout_margin="6dp"
+            />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GPS"
+        android:id="@+id/chkGPS"/>
+
+    <EditText
+        android:id="@+id/txtCantidadGPS"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Cantidad"
+        android:inputType="number"
+        android:maxLength="3"/>
+
+
+    <EditText
+        android:id="@+id/txtPrecioGPS"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:maxLength="6"/>
+
+
+    <EditText
+        android:id="@+id/txtDescripcionGPS"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Descripcion"
+        android:inputType="text"
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cámara"
+        android:id="@+id/chkCamara"/>
+
+    <EditText
+        android:id="@+id/txtCantidadCam"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Cantidad"
+        android:inputType="number"
+        android:maxLength="3"/>
+
+
+    <EditText
+        android:id="@+id/txtPrecioCam"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:maxLength="6"/>
+
+
+    <EditText
+        android:id="@+id/txtDescripcionCam"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Descripcion"
+        android:inputType="text"
+        />
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alarma"
+        android:id="@+id/chkAlarma"/>
+
+    <EditText
+        android:id="@+id/txtCantidadAlm"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Cantidad"
+        android:inputType="number"
+        android:maxLength="3"/>
+
+
+    <EditText
+        android:id="@+id/txtPrecioAlm"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:maxLength="6"/>
+
+
+    <EditText
+        android:id="@+id/txtDescripcionAlm"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Descripcion"
+        android:inputType="text"
+        />
+
+
+
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vigilancia"
+            android:id="@+id/ChkVigilancia"/>
+
+        <EditText
+            android:id="@+id/txtCantidadVig"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Cantidad"
+
+            android:inputType="number"
+            android:maxLength="3"/>
+
+
+        <EditText
+            android:id="@+id/txtPrecioVig"
+
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:hint="Precio"
+            android:inputType="numberDecimal"
+            android:maxLength="6"/>
+
+
+        <EditText
+            android:id="@+id/txtDescripcionVig"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Descripcion"
+            android:inputType="text"
+            />
+
+
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Otros servicios"
+            android:id="@+id/ChkOtros"/>
+
+        <EditText
+            android:id="@+id/txtCantidadOtrs"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Cantidad"
+            android:enabled="false"
+            android:inputType="number"
+            android:maxLength="3"/>
+
+
+        <EditText
+            android:id="@+id/txtPrecioOtrs"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:hint="Precio"
+            android:inputType="numberDecimal"
+            android:maxLength="6"/>
+
+
+        <EditText
+            android:id="@+id/txtDescripcionOtrs"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Descripcion"
+            android:inputType="text"
+            />
+
+
+
+        <RelativeLayout
+            android:id="@+id/rlClientePr3"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_border_green"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/txtSiguienteCliente2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Siguiente"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                ></TextView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    </ScrollView>
+</LinearLayout>

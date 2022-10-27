@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,7 @@ import sv.com.seguridadcontrol.app.dao.AppDatabase
 import sv.com.seguridadcontrol.app.modelos.TicketData
 import sv.com.seguridadcontrol.app.viewmodel.TicketsViewModel
 
-class TicketsAbiertosFragment: Fragment(){
+class TicketsProgramadosFragment: Fragment(){
     private lateinit var adapter: TicketsAdapter
     private lateinit var ticketsViewModel: TicketsViewModel
     var ticketsList:ArrayList<TicketData> = ArrayList()
@@ -137,12 +138,6 @@ class TicketsAbiertosFragment: Fragment(){
 
     fun getTickets(userId:String,type:String,start:String,quantity:String,task:String,token:String){
         ticketsList.clear()
-        val db = AppDatabase.getInstance(requireActivity().application)
-        CoroutineScope(Dispatchers.IO).launch {
-
-        }
-
-
         ticketsViewModel.getTicketsResultObserver().observe(viewLifecycleOwner) { tickets ->
             if (tickets.ticket != null) {
                 tickets.ticket.forEach { t ->
@@ -166,11 +161,13 @@ class TicketsAbiertosFragment: Fragment(){
                     if (t.ticket_start_date != null) {
                         ticketStartDate = t.ticket_start_date
                     }
+                    Log.d("TICKET_ID",t.ticket_id)
+
                     val ticket = TicketData(
                         t.ticket_id,
                         t.id_usuario,
                         t.client_branch,
-                        t.client_reason,
+                        "",
                         t.country,
                         t.creation_date,
                         t.deparment,
@@ -197,7 +194,7 @@ class TicketsAbiertosFragment: Fragment(){
                         t.ticket_type_id
                     )
                     CoroutineScope(Dispatchers.IO).launch {
-                        db.iTicketDAO.insert(ticket)
+                        //db.iTicketDAO.insert(ticket)
                     }
                     CoroutineScope(Dispatchers.Main).launch {
                         ticketsList.add(ticket)
@@ -212,7 +209,7 @@ class TicketsAbiertosFragment: Fragment(){
             } else {
                 Toast.makeText(
                     requireActivity().applicationContext,
-                    "No tienes tickets asignados",
+                    "No tienes tickets abiertos",
                     Toast.LENGTH_LONG
                 ).show()
             }

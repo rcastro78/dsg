@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.activity_principal.*
 import sv.com.seguridadcontrol.app.R
 import sv.com.seguridadcontrol.app.adapter.TabAdapter
-import sv.com.seguridadcontrol.app.fragments.TicketsAbiertosFragment
+import sv.com.seguridadcontrol.app.fragments.TicketsProgramadosFragment
 import sv.com.seguridadcontrol.app.fragments.TicketsCompletedFragment
 import sv.com.seguridadcontrol.app.fragments.TicketsHoyFragment
 
@@ -25,9 +25,9 @@ class ERPPrincipalActivity: AppCompatActivity() {
         container.adapter = mSectionsPagerAdapter
         val adapter = TabAdapter(supportFragmentManager)
         adapter.addFragment(TicketsHoyFragment(), "Hoy")
-        adapter.addFragment(TicketsAbiertosFragment(), "Abiertos")
+        adapter.addFragment(TicketsProgramadosFragment(), "Programados")
         adapter.addFragment(TicketsCompletedFragment(), "Cerrados")
-        adapter.addFragment(TicketsAbiertosFragment(), "Cancelados")
+        //adapter.addFragment(TicketsProgramadosFragment(), "Programados")
         container.adapter = adapter
         tabs.setupWithViewPager(container)
 

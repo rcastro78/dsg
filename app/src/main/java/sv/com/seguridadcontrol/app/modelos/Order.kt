@@ -1,11 +1,11 @@
 package sv.com.seguridadcontrol.app.modelos
 
 data class Order(
-    val change: Any,
+    val change: String,
     val employed_id: String,
     val employed_lastname: String,
     val employed_name: String,
-    val id_change: Any,
+    val id_change: String,
     val instalation: String,
     val order_color: String,
     val order_date: String,

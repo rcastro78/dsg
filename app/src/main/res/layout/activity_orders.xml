@@ -7,20 +7,12 @@
     tools:context=".erp.tecnicos.OrdersActivity"
     android:orientation="vertical"
     android:weightSum="100">
-    <include android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"></include>
-
-
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:weightSum="105"
+        android:weightSum="85"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -565,16 +557,6 @@
             android:text="Órdenes"></TextView>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rvOrders"
-            android:layout_weight="25"
-            android:layout_margin="8dp">
-
-
-
-        </androidx.recyclerview.widget.RecyclerView>
 
 
 

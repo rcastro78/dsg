@@ -49,7 +49,12 @@ class TicketsAdapter (var ticketsList:ArrayList<TicketData>):
         //holder.txtTicketProgress.text = t.ticket_progress
         holder.txtTicketPriority.text = t.ticket_priority
         holder.txtClient.text = t.client_reason+" "+t.client_branch
-        holder.txtEstadoTicket.text = "Programada"
+        if(t.ticket_progress.equals("P"))
+            holder.txtEstadoTicket.text = "Programado"
+
+        if(t.ticket_progress.equals("C"))
+            holder.txtEstadoTicket.text = "Completo"
+
         holder.txtProgrammingDate.text = t.programming_date
         holder.txtTicketType.text = t.ticket_code
         holder.rlHeader.setBackgroundColor(Color.parseColor(t.ticket_color_type))

@@ -13,11 +13,13 @@ import sv.com.seguridadcontrol.app.modelos.Ordenes
 class OrdersViewModel: ViewModel(){
 var ordersMutableData:MutableLiveData<Ordenes>
 var orderStartResultData:MutableLiveData<String>
+var ticketCompletedResultData:MutableLiveData<String>
 
     private var idsgService: IDSGTecnicosService
     init {
         ordersMutableData = MutableLiveData()
         orderStartResultData = MutableLiveData()
+        ticketCompletedResultData = MutableLiveData()
         idsgService = APIWS.getTecnicosService()!!
     }
 
@@ -28,7 +30,31 @@ var orderStartResultData:MutableLiveData<String>
     fun getStartOrderObserver():MutableLiveData<String>{
         return orderStartResultData
     }
+    fun ticketCompletedObserver():MutableLiveData<String>{
+        return ticketCompletedResultData
+    }
 
+
+    fun ticketCompleted(ticket_id: String,user_id:String,comment:String,task:String,token: String,date:String){
+        idsgService.ticketCompleted(ticket_id,user_id,comment, task, token,date)
+            .enqueue(object:Callback<String>{
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response!=null){
+                        ticketCompletedResultData.postValue(response.body())
+                    }else{
+                        Log.d("TICKET","response is null")
+                    }
+
+
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    ticketCompletedResultData.postValue(null)
+                    Log.d("TICKET",t.localizedMessage)
+                }
+
+            })
+    }
 
     fun startOder(order_id:String,user_id:String,task:String,token: String){
         idsgService.startOrder(order_id,user_id,task,token)

@@ -9,3 +9,9 @@ data class Orden(
     val order_end:String,
     val order_color:String
 )
+
+data class OrdenesTicket(
+
+    val order_id:String,
+    val order_num:String
+    )

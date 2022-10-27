@@ -1,7 +1,9 @@
 package sv.com.seguridadcontrol.app.fragments
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Typeface
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,42 +48,49 @@ class TicketsCompletedFragment: Fragment(){
         val tf = Typeface.createFromAsset(requireActivity().assets,"fonts/Nunito-Bold.ttf")
 
         // getOrderList("110","orders_get_order_list","302d6b3a2ecd683c26e1f731897271ca757aa48fd3d802c53ff3a681108ffd1f")
-        getTickets(userId!!,"1","1","1","ticket_show_completed_ticket",token!!)
+        if(hayConexion())
+            getTickets(userId!!,"1","1","1","ticket_show_completed_ticket",token!!)
         //getTickets("7","1","1","1","ticket_show_programming_ticket","302d6b3a2ecd683c26e1f731897271ca757aa48fd3d802c53ff3a681108ffd1f")
+    }
+
+    fun hayConexion(): Boolean {
+        val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return netInfo != null && netInfo.isConnectedOrConnecting
     }
 
     fun getTickets(userId:String,type:String,start:String,quantity:String,task:String,token:String){
         ticketsList.clear()
-        ticketsViewModel.getTicketsResultObserver().observe(viewLifecycleOwner,{tickets->
-            if(tickets.ticket != null) {
+        ticketsViewModel.getTicketsResultObserver().observe(viewLifecycleOwner) { tickets ->
+            if (tickets.ticket != null) {
                 tickets.ticket.forEach { t ->
 
-                    var colorType="#000000"
-                    if(t.ticket_color_type == null){
-                        colorType=t.priority_color
-                    }else{
-                        colorType=t.ticket_color_type
+                    var colorType = "#000000"
+                    if (t.ticket_color_type == null) {
+                        colorType = t.priority_color
+                    } else {
+                        colorType = t.ticket_color_type
                     }
-                    var ticketCode="--"
-                    if(t.ticket_code != null){
+                    var ticketCode = "--"
+                    if (t.ticket_code != null) {
                         ticketCode = t.ticket_code
                     }
 
-                    var ticketEndDate=""
-                    if(t.ticket_end_date != null){
-                        ticketEndDate=t.ticket_end_date
+                    var ticketEndDate = ""
+                    if (t.ticket_end_date != null) {
+                        ticketEndDate = t.ticket_end_date
                     }
 
-                    var ticketStartDate=""
-                    if(t.ticket_start_date != null){
-                        ticketStartDate=t.ticket_start_date
+                    var ticketStartDate = ""
+                    if (t.ticket_start_date != null) {
+                        ticketStartDate = t.ticket_start_date
                     }
 
                     val ticket = TicketData(
                         t.ticket_id,
                         t.id_usuario,
                         t.client_branch,
-                        t.client_reason,
+                        "",
                         t.country,
                         t.creation_date,
                         t.deparment,
@@ -116,12 +125,10 @@ class TicketsCompletedFragment: Fragment(){
                 CoroutineScope(Dispatchers.Main).launch {
                     rvTickets.adapter = adapter
                 }
-            }else{
-                Toast.makeText(requireActivity().applicationContext,"No tienes tickets asignados", Toast.LENGTH_LONG).show()
             }
 
 
-        })
+        }
 
         ticketsViewModel.getTickets(userId,type,start, quantity, task, token)
 
